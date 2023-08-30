@@ -35,7 +35,7 @@ class TacticsWindow(Adw.ApplicationWindow):
 
         layout_box = Gtk.Box(orientation=1)
         self.headerbar = Adw.HeaderBar(css_classes=["flat"])
-        self.player_turn = Gtk.Label(label="Player 1", css_classes=["error"], margin_start=6)
+        self.player_turn = Gtk.Label(label="Player 1", css_classes=["error", "label"], margin_start=6)
         self.headerbar.pack_start(self.player_turn)
 
         menu_button = Gtk.MenuButton()

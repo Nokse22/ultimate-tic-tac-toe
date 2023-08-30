@@ -58,9 +58,12 @@ class TacticsApplication(Adw.Application):
 
         }
         .button {
-            transition: background-color 0.5s ease-in, color 0.5s ease-in;
+            transition: background-color 0.2s ease-in, color 0.6s ease-in;
             padding: 5px;
             font-size: 140%;
+        }
+        .label {
+            transition: color 0.3s ease-in;
         }
         .big-grid {
             background-color: @window_fg_color;
@@ -83,17 +86,18 @@ class TacticsApplication(Adw.Application):
             Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
     def on_rules_action(self, widget, _):
-        window = Adw.ApplicationWindow(title="Rules", width_request=300, height_request=300)
+        window = Adw.ApplicationWindow(title="How to play", width_request=300, height_request=300)
         window.set_default_size(500, 400)
         box = Gtk.Box(orientation=1)
         window.set_content(box)
-        headerbar = Adw.HeaderBar(css_classes=["flat"])
+        headerbar = Adw.HeaderBar(css_classes=[""])
         box.append(headerbar)
-        text = '''Players X and O take turns, beginning with X. X starts by placing their mark in any of the 81 empty spots. O responds, constrained to the small board indicated by X's previous move's position. For instance, if X plays in the top-right square of a small 3x3 board, O must play in the corresponding top-right board. The chosen spot determines the next small board for the next player.
+        text = '''Just like in regular tic-tac-toe, the two players (X and O) take turns, starting with X. The game starts with X playing wherever they want in any of the 81 empty spots. Next the opponent plays, however they are forced to play in the small board indicated by the relative location of the previous move. For example, if X plays in the top right square of a small (3 × 3) board, then O has to play in the small board located at the top right of the larger board. Playing any of the available spots decides in which small board the next player plays.
 
-Winning a small board as per regular tic-tac-toe rules marks it for that player in the larger board. A filled small board prevents further moves in it. If sent to such a board, the player can choose another. The game ends when a player wins the larger board or no legal moves remain, resulting in a draw.'''
+If a move is played so that it is to win a small board by the rules of normal tic-tac-toe, then the entire small board is marked as won by the player in the larger board. Once a small board is won by a player or it is filled completely, no more moves may be played in that board. If a player is sent to such a board, then that player may play in any other board. Game play ends when either a player wins the larger board or there are no legal moves remaining, in which case the game is a draw.
+        '''
         scrolled = Gtk.ScrolledWindow(vexpand=True)
-        scrolled.set_child(Gtk.Label(label=text, wrap=True))
+        scrolled.set_child(Gtk.Label(label=text, wrap=True, margin_start=12, margin_end=12, margin_top=12))
         box.append(scrolled)
 
         window.present()
