@@ -69,7 +69,9 @@ class TacticsWindow(Adw.ApplicationWindow):
                 margin_top=12, margin_bottom=12, margin_start=12, margin_end=12)
         self.clamp = Adw.Clamp()
         self.clamp.set_child(self.big_grid)
-        layout_box.append(self.clamp)
+        self.toast_overlay = Adw.ToastOverlay()
+        self.toast_overlay.set_child(self.clamp)
+        layout_box.append(self.toast_overlay)
 
         self.buttons = []
 
@@ -88,7 +90,7 @@ class TacticsWindow(Adw.ApplicationWindow):
                 self.big_grid.attach(grid, x, y, 1, 1)
 
         self.player_sign = "X"
-        self.multyplayer = False
+        self.multiplayer = False
         self.player_gen = self.player_number_generator()
         self.current_player = 1
 
@@ -127,57 +129,36 @@ class TacticsWindow(Adw.ApplicationWindow):
     def on_button_clicked(self, btn):
         self.select_button(btn)
 
-        print(self.current_player, )
+        print(self.multiplayer)
 
         if self.game_over:
-            for x in range(3):
-                for y in range(3):
-                    grid = self.big_grid.get_child_at(x, y)
-                    grid.set_sensitive(False)
+            self.game_is_over()
             return
 
-        if not self.multyplayer and self.current_player == 1:
+        if not self.multiplayer and self.current_player == 1:
             coordinates = btn.get_name().split(",")
             board_x = int(coordinates[2])
             board_y = int(coordinates[3])
             grid = self.big_grid.get_child_at(board_x, board_y)
             if grid.get_name() == "X" or grid.get_name() == "O":
-                board = []
-                for y in range(3):
-                    row = []
-                    for x in range(3):
-                        play = self.big_grid.get_child_at(x, y).get_name()
-                        if play == "X":
-                            row.append(-1)
-                        elif play == "O":
-                            row.append(1)
-                        elif play == "":
-                            row.append(0)
-                        print(play)
-                    board.append(row)
+                board = self.get_big_grid_board()
+                if board == None:
+                    self.game_over = True
+                    self.game_is_over()
+                    return
                 start = time.time()
                 best_move = self.find_best_move(board)
                 print(f"Best move: {best_move} in {time.time() - start}")
                 grid = self.big_grid.get_child_at(best_move[1], best_move[0])
 
-                if grid.get_name() == "X" or grid.get_name() == "O":
-                    while grid.get_name() == "X" or grid.get_name() == "O":
+                if grid.get_name() in ["X", "O", "D"]:
+                    while grid.get_name() in ["X", "O", "D"]:
                         board_x = random.randint(0, 2)
                         board_y = random.randint(0, 2)
                         grid = self.big_grid.get_child_at(board_x, board_y)
 
-            board = []
-            for y in range(3):
-                row = []
-                for x in range(3):
-                    play = grid.get_child_at(x, y).get_label()
-                    if play == "":
-                        row.append(0)
-                    elif play == "X":
-                        row.append(-1)
-                    elif play == "O":
-                        row.append(1)
-                board.append(row)
+            board = self.get_small_grid_board(grid)
+
             start = time.time()
             best_move = self.find_best_move(board)
             print(f"Best move: {best_move} in {time.time() - start}")
@@ -185,11 +166,44 @@ class TacticsWindow(Adw.ApplicationWindow):
             self.select_button(button)
 
         if self.game_over:
+            self.game_is_over()
+
+    def get_small_grid_board(self, grid):
+        board = []
+        for y in range(3):
+            row = []
             for x in range(3):
-                for y in range(3):
-                    grid = self.big_grid.get_child_at(x, y)
-                    grid.set_sensitive(False)
-            return
+                play = grid.get_child_at(x, y).get_label()
+                if play == "":
+                    row.append(0)
+                elif play == "X":
+                    row.append(-1)
+                elif play == "O":
+                    row.append(1)
+            board.append(row)
+        return board
+
+    def get_big_grid_board(self):
+        board = []
+        for y in range(3):
+            row = []
+            for x in range(3):
+                play = self.big_grid.get_child_at(x, y).get_name()
+                if play == "X":
+                    row.append(-1)
+                elif play == "O":
+                    row.append(1)
+                elif play == "":
+                    row.append(0)
+            board.append(row)
+        return board
+
+    def game_is_over(self):
+        for x in range(3):
+            for y in range(3):
+                grid = self.big_grid.get_child_at(x, y)
+                grid.set_sensitive(False)
+        return
 
     def select_button(self, btn):
         self.current_player = next(self.player_gen)
@@ -211,12 +225,21 @@ class TacticsWindow(Adw.ApplicationWindow):
         btn.set_sensitive(False)
 
         grid = self.big_grid.get_child_at(int(coordinates[0]), int(coordinates[1]))
-        if self.check_win(grid, player_label):
+        state = self.check_win(grid, player_label)
+        if state == None:
+            grid.set_sensitive(False)
+            grid.set_name("D")
+        elif state:
             grid.set_sensitive(False)
             grid.add_css_class("won-"+str(self.current_player))
             grid.set_name(player_label)
             if self.big_check_win(player_label):
                 self.game_over = True
+                if self.current_player == 2 and self.multiplayer == False:
+                    toast = Adw.Toast(title=f"You lost!", button_label="Restart", action_name="app.restart")
+                else:
+                    toast = Adw.Toast(title=f"Player {self.current_player} won", button_label="Restart", action_name="app.restart")
+                self.toast_overlay.add_toast(toast)
                 for x in range(3):
                     for y in range(3):
                         grid = self.big_grid.get_child_at(x, y)
@@ -266,6 +289,15 @@ class TacticsWindow(Adw.ApplicationWindow):
            all(grid.get_child_at(i, 2 - i).get_label() == player_symbol for i in range(3)):
             return True
 
+        full = True
+        for x in range(3):
+            for y in range(3):
+                label = grid.get_child_at(x, y).get_label()
+                if label not in ["X", "O"]:
+                    full = False
+        if full:
+            return None
+
         return False
 
     def big_check_win(self, player_symbol):
@@ -280,6 +312,15 @@ class TacticsWindow(Adw.ApplicationWindow):
         if all(self.big_grid.get_child_at(i, i).get_name() == player_symbol for i in range(3)) or \
            all(self.big_grid.get_child_at(i, 2 - i).get_name() == player_symbol for i in range(3)):
             return True
+
+        full = True
+        for x in range(3):
+            for y in range(3):
+                label = self.big_grid.get_child_at(x, y).get_name()
+                if label not in ["X", "O", "D"]:
+                    full = False
+        if full:
+            return None
 
         return False
 

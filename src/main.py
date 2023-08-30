@@ -103,14 +103,16 @@ If a move is played so that it is to win a small board by the rules of normal ti
         window.present()
 
     def on_singleplayer_action(self, widget, _):
+        print("multiplayer")
         self.win.multyplayer = False
         self.win.restart()
         self.singleplayer_action.set_enabled(False)
         self.multiplayer_action.set_enabled(True)
 
     def on_multiplayer_action(self, widget, _):
-        self.win.multyplayer = True
+        print("multiplayer")
         self.win.restart()
+        self.win.multyplayer = True
         self.singleplayer_action.set_enabled(True)
         self.multiplayer_action.set_enabled(False)
 
