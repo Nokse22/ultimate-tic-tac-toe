@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg height="128px" viewBox="0 0 128 128" width="128px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <linearGradient id="a" gradientTransform="matrix(0.232143 0 0 0.328947 -9.566589 263.826935)" gradientUnits="userSpaceOnUse" x1="88.595886" x2="536.595886" y1="-449.394012" y2="-449.394012">
+        <stop offset="0" stop-color="#77767b"/>
+        <stop offset="0.0384615" stop-color="#c0bfbc"/>
+        <stop offset="0.0768555" stop-color="#9a9996"/>
+        <stop offset="0.923077" stop-color="#9a9996"/>
+        <stop offset="0.961538" stop-color="#c0bfbc"/>
+        <stop offset="1" stop-color="#77767b"/>
+    </linearGradient>
+    <path d="m 19 16 h 88 c 4.417969 0 8 3.582031 8 8 v 84 c 0 4.417969 -3.582031 8 -8 8 h -88 c -4.417969 0 -8 -3.582031 -8 -8 v -84 c 0 -4.417969 3.582031 -8 8 -8 z m 0 0" fill="url(#a)"/>
+    <path d="m 19 8 h 88 c 4.417969 0 8 3.726562 8 8.320312 v 87.359376 c 0 4.59375 -3.582031 8.320312 -8 8.320312 h -88 c -4.417969 0 -8 -3.726562 -8 -8.320312 v -87.359376 c 0 -4.59375 3.582031 -8.320312 8 -8.320312 z m 0 0" fill="#ffffff"/>
+    <g stroke-width="1.00157">
+        <path d="m 47 106 v -92" fill="none" stroke="#c0bfbc" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 79 106 v -92" fill="none" stroke="#c0bfbc" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 15 44 h 96" fill="none" stroke="#c0bfbc" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 15 76 h 96" fill="none" stroke="#c0bfbc" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 58 72 v -24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 68 72 v -24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 51 55 h 24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 51 65 h 24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 58 40 v -24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 68 40 v -24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 51 23 h 24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 51 33 h 24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 90 40 v -24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 100 40 v -24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 83 23 h 24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 83 33 h 24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 90 72 v -24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 100 72 v -24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 83 55 h 24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 83 65 h 24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 90 104 v -24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 100 104 v -24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 83 87 h 24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 83 97 h 24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 58 104 v -24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 68 104 v -24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 51 87 h 24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 51 97 h 24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 26 72 v -24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 36 72 v -24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 19 55 h 24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 19 65 h 24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 26 40 v -24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 36 40 v -24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 19 23 h 24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 19 33 h 24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 26 104 v -24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 36 104 v -24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 19 87 h 24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 19 97 h 24" fill="none" stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 66 60 c 0 1.65625 -1.34375 3 -3 3 s -3 -1.34375 -3 -3 s 1.34375 -3 3 -3 s 3 1.34375 3 3 z m 0 0" fill="#ffffff" stroke="#1a5fb4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 56 70 c 0 1.65625 -1.34375 3 -3 3 s -3 -1.34375 -3 -3 s 1.34375 -3 3 -3 s 3 1.34375 3 3 z m 0 0" fill="#ffffff" stroke="#1a5fb4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 76 50 c 0 1.65625 -1.34375 3 -3 3 s -3 -1.34375 -3 -3 s 1.34375 -3 3 -3 s 3 1.34375 3 3 z m 0 0" fill="#ffffff" stroke="#1a5fb4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 48 45 h 30 v 30 h -30 z m 0 0" fill="none" stroke="#1a5fb4"/>
+        <path d="m 70 67 l 6 6" fill="#62a0ea" stroke="#c01c28" stroke-linecap="round"/>
+        <path d="m 70 73 l 6 -6" fill="#62a0ea" stroke="#c01c28" stroke-linecap="round"/>
+        <path d="m 34 38 c 0 1.65625 -1.34375 3 -3 3 s -3 -1.34375 -3 -3 s 1.34375 -3 3 -3 s 3 1.34375 3 3 z m 0 0" fill="#ffffff" stroke="#1a5fb4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 44 18 c 0 1.65625 -1.34375 3 -3 3 s -3 -1.34375 -3 -3 s 1.34375 -3 3 -3 s 3 1.34375 3 3 z m 0 0" fill="#ffffff" stroke="#1a5fb4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 16 13 h 30 v 30 h -30 z m 0 0" fill="none" stroke="#c01c28"/>
+        <path d="m 38 25 l 6 6" fill="#62a0ea" stroke="#c01c28" stroke-linecap="round"/>
+        <path d="m 38 31 l 6 -6" fill="#62a0ea" stroke="#c01c28" stroke-linecap="round"/>
+        <path d="m 28 25 l 6 6" fill="#62a0ea" stroke="#c01c28" stroke-linecap="round"/>
+        <path d="m 28 31 l 6 -6" fill="#62a0ea" stroke="#c01c28" stroke-linecap="round"/>
+        <path d="m 18 25 l 6 6" fill="#62a0ea" stroke="#c01c28" stroke-linecap="round"/>
+        <path d="m 18 31 l 6 -6" fill="#62a0ea" stroke="#c01c28" stroke-linecap="round"/>
+        <path d="m 34 70 c 0 1.65625 -1.34375 3 -3 3 s -3 -1.34375 -3 -3 s 1.34375 -3 3 -3 s 3 1.34375 3 3 z m 0 0" fill="#ffffff" stroke="#1a5fb4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 88 102 c 0 1.65625 -1.34375 3 -3 3 s -3 -1.34375 -3 -3 s 1.34375 -3 3 -3 s 3 1.34375 3 3 z m 0 0" fill="#ffffff" stroke="#1a5fb4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 108 38 c 0 1.65625 -1.34375 3 -3 3 s -3 -1.34375 -3 -3 s 1.34375 -3 3 -3 s 3 1.34375 3 3 z m 0 0" fill="#ffffff" stroke="#1a5fb4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 92 57 l 6 6" fill="#62a0ea" stroke="#c01c28" stroke-linecap="round"/>
+        <path d="m 92 63 l 6 -6" fill="#62a0ea" stroke="#c01c28" stroke-linecap="round"/>
+        <path d="m 28 99 l 6 6" fill="#62a0ea" stroke="#c01c28" stroke-linecap="round"/>
+        <path d="m 28 105 l 6 -6" fill="#62a0ea" stroke="#c01c28" stroke-linecap="round"/>
+        <path d="m 82 15 l 6 6" fill="#62a0ea" stroke="#c01c28" stroke-linecap="round"/>
+        <path d="m 82 21 l 6 -6" fill="#62a0ea" stroke="#c01c28" stroke-linecap="round"/>
+        <path d="m 102 89 l 6 6" fill="#62a0ea" stroke="#c01c28" stroke-linecap="round"/>
+        <path d="m 102 95 l 6 -6" fill="#62a0ea" stroke="#c01c28" stroke-linecap="round"/>
+        <path d="m 56 28 c 0 1.65625 -1.34375 3 -3 3 s -3 -1.34375 -3 -3 s 1.34375 -3 3 -3 s 3 1.34375 3 3 z m 0 0" fill="#ffffff" stroke="#1a5fb4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m 50 79 l 6 6" fill="#62a0ea" stroke="#c01c28" stroke-linecap="round"/>
+        <path d="m 50 85 l 6 -6" fill="#62a0ea" stroke="#c01c28" stroke-linecap="round"/>
+        <path d="m 66 92 c 0 1.65625 -1.34375 3 -3 3 s -3 -1.34375 -3 -3 s 1.34375 -3 3 -3 s 3 1.34375 3 3 z m 0 0" fill="#ffffff" stroke="#1a5fb4" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+</svg>

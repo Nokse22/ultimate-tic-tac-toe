@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Tactics
+Exec=tactics
+Icon=io.github.nokse22.tactics
+Terminal=false
+Type=Application
+Categories=GTK;Game;tictactoe;
+StartupNotify=true
