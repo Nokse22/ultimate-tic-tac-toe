@@ -37,6 +37,8 @@ class TacticsApplication(Adw.Application):
         self.create_action('quit', lambda *_: self.quit(), ['<primary>q'])
         self.create_action('about', self.on_about_action)
         self.create_action('preferences', self.on_preferences_action)
+        self.create_action('restart', self.on_restart_action)
+        self.create_action('rules', self.on_rules_action)
 
         self.multiplayer_action = Gio.SimpleAction.new('multiplayer', None)
         self.multiplayer_action.connect("activate", self.on_multiplayer_action)
@@ -73,9 +75,6 @@ class TacticsApplication(Adw.Application):
         }
         '''
 
-        # box-shadow: 0px 0px 0px 2px #f66151;
-        # border-radius: 10px;
-
         css_provider = Gtk.CssProvider()
         css_provider.load_from_data(css, -1)
         Gtk.StyleContext.add_provider_for_display(
@@ -83,15 +82,36 @@ class TacticsApplication(Adw.Application):
             css_provider,
             Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
+    def on_rules_action(self, widget, _):
+        window = Adw.ApplicationWindow(title="Rules", width_request=300, height_request=300)
+        window.set_default_size(500, 400)
+        box = Gtk.Box(orientation=1)
+        window.set_content(box)
+        headerbar = Adw.HeaderBar(css_classes=["flat"])
+        box.append(headerbar)
+        text = '''Players X and O take turns, beginning with X. X starts by placing their mark in any of the 81 empty spots. O responds, constrained to the small board indicated by X's previous move's position. For instance, if X plays in the top-right square of a small 3x3 board, O must play in the corresponding top-right board. The chosen spot determines the next small board for the next player.
+
+Winning a small board as per regular tic-tac-toe rules marks it for that player in the larger board. A filled small board prevents further moves in it. If sent to such a board, the player can choose another. The game ends when a player wins the larger board or no legal moves remain, resulting in a draw.'''
+        scrolled = Gtk.ScrolledWindow(vexpand=True)
+        scrolled.set_child(Gtk.Label(label=text, wrap=True))
+        box.append(scrolled)
+
+        window.present()
+
     def on_singleplayer_action(self, widget, _):
         self.win.multyplayer = False
+        self.win.restart()
         self.singleplayer_action.set_enabled(False)
         self.multiplayer_action.set_enabled(True)
 
     def on_multiplayer_action(self, widget, _):
         self.win.multyplayer = True
+        self.win.restart()
         self.singleplayer_action.set_enabled(True)
         self.multiplayer_action.set_enabled(False)
+
+    def on_restart_action(self, widget, _):
+        self.win.restart()
 
     def do_activate(self):
         """Called when the application is activated.
@@ -111,6 +131,8 @@ class TacticsApplication(Adw.Application):
                                 application_icon='io.github.nokse22.tactics',
                                 developer_name='Nokse',
                                 version='0.1.0',
+                                website='https://github.com/Nokse22/tactics',
+                                issue_url='https://github.com/Nokse22/tactics/issues',
                                 developers=['Nokse'],
                                 copyright='© 2023 Nokse')
         about.present()

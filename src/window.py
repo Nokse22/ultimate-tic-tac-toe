@@ -23,6 +23,7 @@ from gi.repository import Gio
 from gi.repository import GLib
 
 import random
+import time
 
 class TacticsWindow(Adw.ApplicationWindow):
     __gtype_name__ = 'TacticsWindow'
@@ -45,21 +46,13 @@ class TacticsWindow(Adw.ApplicationWindow):
         section.append(_("Single player"), "app.singleplayer")
         section.append(_("Multiplayer"), "app.multiplayer")
 
-        # singleplayer = Gio.MenuItem.new(_("Single player"))
-        # single_variant = GLib.Variant.new_boolean(True)
-        # singleplayer.set_action_and_target_value("app.singleplayer", single_variant)
-        # multiplayer = Gio.MenuItem.new(_("Multiplayer"))
-        # multi_variant = GLib.Variant.new_boolean(False)
-        # multiplayer.set_action_and_target_value("app.multiplayer", multi_variant)
-        # section.append_item(singleplayer)
-        # section.append_item(multiplayer)
-
         menu.append_section("Players", section)
 
         section = Gio.Menu()
         menu.append_section(None, section)
 
-        # menu.append(_("Preferences"), "app.preferences")
+        section.append(_("Restart"), "app.restart")
+        section.append(_("How to play"), "app.rules")
         section.append(_("Keyboard shortcuts"), "win.show-help-overlay")
         section.append(_("About Tactics"), "app.about")
         menu_button.set_menu_model(menu)
@@ -83,23 +76,45 @@ class TacticsWindow(Adw.ApplicationWindow):
         for x in range(3):
             for y in range(3):
                 grid = Gtk.Grid(name="", column_spacing=6, row_spacing=6, vexpand=True, hexpand=True, css_classes=["small-grid"])
-                small_grid_buttons = []
                 for g_x in range(3):
                     for g_y in range(3):
                         button = Gtk.Button(name=f"{x},{y},{g_x},{g_y}",
                                 vexpand=True, hexpand=True,
                                 width_request=50, height_request=50,
-                                css_classes=["button"])
+                                css_classes=["button"], label="")
                         button.connect("clicked", self.on_button_clicked)
                         grid.attach(button, g_x, g_y, 1, 1)
-                        small_grid_buttons.append(button)
-                self.buttons.append(small_grid_buttons)
+                        self.buttons.append(button)
                 self.big_grid.attach(grid, x, y, 1, 1)
 
         self.player_sign = "X"
         self.multyplayer = False
         self.player_gen = self.player_number_generator()
         self.current_player = 1
+
+        self.game_over = False
+
+    def restart(self):
+        for button in self.buttons:
+            button.set_label("")
+            button.remove_css_class("error")
+            button.remove_css_class("accent")
+            button.set_sensitive(True)
+
+        for x in range(3):
+            for y in range(3):
+                grid = self.big_grid.get_child_at(x, y)
+                grid.set_sensitive(True)
+                grid.remove_css_class("won-1")
+                grid.remove_css_class("won-2")
+                grid.set_name("")
+
+        if self.current_player == 1:
+            self.current_player = next(self.player_gen)
+
+        self.player_turn.set_label("Player 1")
+        self.player_turn.remove_css_class("accent")
+        self.player_turn.add_css_class("error")
 
         self.game_over = False
 
@@ -111,6 +126,8 @@ class TacticsWindow(Adw.ApplicationWindow):
 
     def on_button_clicked(self, btn):
         self.select_button(btn)
+
+        print(self.current_player, )
 
         if self.game_over:
             for x in range(3):
@@ -124,7 +141,6 @@ class TacticsWindow(Adw.ApplicationWindow):
             board_x = int(coordinates[2])
             board_y = int(coordinates[3])
             grid = self.big_grid.get_child_at(board_x, board_y)
-            # grid.get_name() player_label
             if grid.get_name() == "X" or grid.get_name() == "O":
                 board = []
                 for y in range(3):
@@ -139,9 +155,9 @@ class TacticsWindow(Adw.ApplicationWindow):
                             row.append(0)
                         print(play)
                     board.append(row)
-                print(board)
+                start = time.time()
                 best_move = self.find_best_move(board)
-                print("Best move:", best_move)
+                print(f"Best move: {best_move} in {time.time() - start}")
                 grid = self.big_grid.get_child_at(best_move[1], best_move[0])
 
                 if grid.get_name() == "X" or grid.get_name() == "O":
@@ -155,16 +171,16 @@ class TacticsWindow(Adw.ApplicationWindow):
                 row = []
                 for x in range(3):
                     play = grid.get_child_at(x, y).get_label()
-                    if play == None:
+                    if play == "":
                         row.append(0)
                     elif play == "X":
                         row.append(-1)
                     elif play == "O":
                         row.append(1)
                 board.append(row)
-            print(board, board_x, board_y)
+            start = time.time()
             best_move = self.find_best_move(board)
-            print("Best move:", best_move)
+            print(f"Best move: {best_move} in {time.time() - start}")
             button = grid.get_child_at(best_move[1], best_move[0])
             self.select_button(button)
 
@@ -267,7 +283,6 @@ class TacticsWindow(Adw.ApplicationWindow):
 
         return False
 
-
     def evaluate(self, board):
         # Check rows, columns, and diagonals for a win
         for row in board:
@@ -291,7 +306,7 @@ class TacticsWindow(Adw.ApplicationWindow):
         # Game still ongoing
         return None
 
-    def minimax(self, board, depth, is_maximizing):
+    def minimax(self, board, depth, alpha, beta, is_maximizing):
         result = self.evaluate(board)
 
         if result is not None:
@@ -303,9 +318,12 @@ class TacticsWindow(Adw.ApplicationWindow):
                 for col in range(3):
                     if board[row][col] == 0:
                         board[row][col] = 1
-                        score = self.minimax(board, depth + 1, False)
+                        score = self.minimax(board, depth + 1, alpha, beta, False)
                         board[row][col] = 0
                         best_score = max(best_score, score)
+                        alpha = max(alpha, best_score)
+                        if beta <= alpha:
+                            break
             return best_score
         else:
             best_score = float('inf')
@@ -313,27 +331,29 @@ class TacticsWindow(Adw.ApplicationWindow):
                 for col in range(3):
                     if board[row][col] == 0:
                         board[row][col] = -1
-                        score = self.minimax(board, depth + 1, True)
+                        score = self.minimax(board, depth + 1, alpha, beta, True)
                         board[row][col] = 0
                         best_score = min(best_score, score)
+                        beta = min(beta, best_score)
+                        if beta <= alpha:
+                            break
             return best_score
 
     def find_best_move(self, board):
         best_score = float('-inf')
         best_move = None
 
-        if board == [[0, 0, 0],[0, 0, 0],[0, 0, 0]]:
+        if board == [[0, 0, 0], [0, 0, 0], [0, 0, 0]]:
             return [random.randint(0, 2), random.randint(0, 2)]
 
         for row in range(3):
             for col in range(3):
                 if board[row][col] == 0:
                     board[row][col] = 1
-                    score = self.minimax(board, 0, False)
+                    score = self.minimax(board, 0, float('-inf'), float('inf'), False)
                     board[row][col] = 0
                     if score > best_score:
                         best_score = score
                         best_move = (row, col)
 
         return best_move
-
