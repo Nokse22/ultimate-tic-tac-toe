@@ -102,10 +102,10 @@ If a move is played so that it is to win a small board by the rules of normal ti
         '''
         scrolled = Gtk.ScrolledWindow(vexpand=True)
         box2 = Gtk.Box(orientation=1)
-        image = Gtk.Image.new_from_file("explaination.svg")
-        image.set_pixel_size(400)
-        image.add_css_class("image")
-        box2.append(image)
+        # image = Gtk.Image.new_from_icon_name("explaination")
+        # image.set_pixel_size(400)
+        # image.add_css_class("image")
+        # box2.append(image)
         box2.append(Gtk.Label(label=text, wrap=True, margin_start=12, margin_end=12, margin_top=12))
         scrolled.set_child(box2)
 
