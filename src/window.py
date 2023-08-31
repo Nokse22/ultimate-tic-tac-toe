@@ -46,7 +46,7 @@ class TacticsWindow(Adw.ApplicationWindow):
         section.append(_("Single player"), "app.singleplayer")
         section.append(_("Multiplayer"), "app.multiplayer")
 
-        menu.append_section("Players", section)
+        menu.append_section(None, section)
 
         section = Gio.Menu()
         menu.append_section(None, section)
@@ -140,27 +140,26 @@ class TacticsWindow(Adw.ApplicationWindow):
             board_x = int(coordinates[2])
             board_y = int(coordinates[3])
             grid = self.big_grid.get_child_at(board_x, board_y)
-            if grid.get_name() == "X" or grid.get_name() == "O":
+            if grid.get_name() in ["X", "O", "D"]:
                 board = self.get_big_grid_board()
-                if board == None:
-                    self.game_over = True
-                    self.game_is_over()
-                    return
-                start = time.time()
-                best_move = self.find_best_move(board)
-                print(f"Best move: {best_move} in {time.time() - start}")
-                grid = self.big_grid.get_child_at(best_move[1], best_move[0])
+                if board != None:
+                    start = time.time()
+                    best_move = self.find_best_move(board)
+                    print(board)
+                    print(f"Best move: {best_move} in {time.time() - start}")
+                    grid = self.big_grid.get_child_at(best_move[1], best_move[0])
 
                 if grid.get_name() in ["X", "O", "D"]:
                     while grid.get_name() in ["X", "O", "D"]:
                         board_x = random.randint(0, 2)
                         board_y = random.randint(0, 2)
                         grid = self.big_grid.get_child_at(board_x, board_y)
+                        print(grid.get_name())
 
             board = self.get_small_grid_board(grid)
-
             start = time.time()
             best_move = self.find_best_move(board)
+            print(board)
             print(f"Best move: {best_move} in {time.time() - start}")
             button = grid.get_child_at(best_move[1], best_move[0])
             self.select_button(button)
@@ -195,6 +194,8 @@ class TacticsWindow(Adw.ApplicationWindow):
                     row.append(1)
                 elif play == "":
                     row.append(0)
+                elif play == "D":
+                    return None
             board.append(row)
         return board
 
@@ -233,37 +234,38 @@ class TacticsWindow(Adw.ApplicationWindow):
             grid.set_sensitive(False)
             grid.add_css_class("won-"+str(self.current_player))
             grid.set_name(player_label)
-            if self.big_check_win(player_label):
+            state = self.big_check_win(player_label)
+            if state == None:
+                self.game_over = True
+                toast = Adw.Toast(title=f"It's a tie", button_label="Restart", action_name="app.restart")
+                self.toast_overlay.add_toast(toast)
+                self.make_all_not_sensitive()
+                return
+            elif state:
                 self.game_over = True
                 if self.current_player == 2 and self.multiplayer == False:
                     toast = Adw.Toast(title=f"You lost!", button_label="Restart", action_name="app.restart")
                 else:
                     toast = Adw.Toast(title=f"Player {self.current_player} won", button_label="Restart", action_name="app.restart")
                 self.toast_overlay.add_toast(toast)
-                for x in range(3):
-                    for y in range(3):
-                        grid = self.big_grid.get_child_at(x, y)
-                        grid.set_sensitive(False)
-                        return
+                self.make_all_not_sensitive()
+                return
 
-        for x in range(3):
-            for y in range(3):
-                grid = self.big_grid.get_child_at(x, y)
-                grid.set_sensitive(False)
+        self.make_all_not_sensitive()
 
         active_grid_x = int(coordinates[2])
         active_grid_y = int(coordinates[3])
 
         grid = self.big_grid.get_child_at(active_grid_x, active_grid_y)
         style_context = grid.get_style_context()
-        if not (style_context.has_class("won-1") or style_context.has_class("won-2")):
+        if grid.get_name() not in ["X", "O", "D"]:
             grid.set_sensitive(True)
         else:
             for x in range(3):
                 for y in range(3):
                     grid = self.big_grid.get_child_at(x, y)
                     style_context = grid.get_style_context()
-                    if not (style_context.has_class("won-1") or style_context.has_class("won-2")):
+                    if grid.get_name() not in ["X", "O", "D"]:
                         grid.set_sensitive(True)
 
         match self.current_player:
@@ -299,6 +301,12 @@ class TacticsWindow(Adw.ApplicationWindow):
             return None
 
         return False
+
+    def make_all_not_sensitive(self):
+        for x in range(3):
+            for y in range(3):
+                grid = self.big_grid.get_child_at(x, y)
+                grid.set_sensitive(False)
 
     def big_check_win(self, player_symbol):
         for row in range(3):
