@@ -62,6 +62,9 @@ class TacticsApplication(Adw.Application):
             padding: 5px;
             font-size: 140%;
         }
+        .image {
+            padding: 0px;
+        }
         .label {
             transition: color 0.3s ease-in;
         }
@@ -87,7 +90,8 @@ class TacticsApplication(Adw.Application):
 
     def on_rules_action(self, widget, _):
         window = Adw.ApplicationWindow(title="How to play", width_request=300, height_request=300)
-        window.set_default_size(500, 400)
+        window.set_default_size(500, 600)
+        window.set_transient_for(self.win)
         box = Gtk.Box(orientation=1)
         window.set_content(box)
         headerbar = Adw.HeaderBar(css_classes=[""])
@@ -97,14 +101,21 @@ class TacticsApplication(Adw.Application):
 If a move is played so that it is to win a small board by the rules of normal tic-tac-toe, then the entire small board is marked as won by the player in the larger board. Once a small board is won by a player or it is filled completely, no more moves may be played in that board. If a player is sent to such a board, then that player may play in any other board. Game play ends when either a player wins the larger board or there are no legal moves remaining, in which case the game is a draw.
         '''
         scrolled = Gtk.ScrolledWindow(vexpand=True)
-        scrolled.set_child(Gtk.Label(label=text, wrap=True, margin_start=12, margin_end=12, margin_top=12))
+        box2 = Gtk.Box(orientation=1)
+        image = Gtk.Image.new_from_file("explaination.svg")
+        image.set_pixel_size(400)
+        image.add_css_class("image")
+        box2.append(image)
+        box2.append(Gtk.Label(label=text, wrap=True, margin_start=12, margin_end=12, margin_top=12))
+        scrolled.set_child(box2)
+
         box.append(scrolled)
 
         window.present()
 
     def on_singleplayer_action(self, widget, _):
         print("multiplayer")
-        self.win.multyplayer = False
+        self.win.multiplayer = False
         self.win.restart()
         self.singleplayer_action.set_enabled(False)
         self.multiplayer_action.set_enabled(True)
@@ -112,7 +123,7 @@ If a move is played so that it is to win a small board by the rules of normal ti
     def on_multiplayer_action(self, widget, _):
         print("multiplayer")
         self.win.restart()
-        self.win.multyplayer = True
+        self.win.multiplayer = True
         self.singleplayer_action.set_enabled(True)
         self.multiplayer_action.set_enabled(False)
 
