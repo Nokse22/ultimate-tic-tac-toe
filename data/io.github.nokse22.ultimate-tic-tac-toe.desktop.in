@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Ultimate Tic Tac Toe
-Exec=ultimate-tic-tac-toec-toe
+Exec=ultimate-tic-tac-toe
 Icon=io.github.nokse22.ultimate-tic-tac-toe
 Terminal=false
 Type=Application
