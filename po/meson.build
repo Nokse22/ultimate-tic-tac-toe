@@ -1,1 +1,1 @@
-i18n.gettext('tactics', preset: 'glib')
+i18n.gettext('ultimate-tactic', preset: 'glib')

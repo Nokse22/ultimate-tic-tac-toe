@@ -32,7 +32,7 @@ class TacticsApplication(Adw.Application):
     """The main application singleton class."""
 
     def __init__(self):
-        super().__init__(application_id='io.github.nokse22.tactics',
+        super().__init__(application_id='io.github.nokse22.ultimate-tactic',
                          flags=Gio.ApplicationFlags.DEFAULT_FLAGS)
         self.create_action('quit', lambda *_: self.quit(), ['<primary>q'])
         self.create_action('about', self.on_about_action)
@@ -144,12 +144,12 @@ If a move is played so that it is to win a small board by the rules of normal ti
     def on_about_action(self, widget, _):
         """Callback for the app.about action."""
         about = Adw.AboutWindow(transient_for=self.props.active_window,
-                                application_name='Tactics',
-                                application_icon='io.github.nokse22.tactics',
+                                application_name='Ultimate Tactic',
+                                application_icon='io.github.nokse22.ultimate-tactic',
                                 developer_name='Nokse',
                                 version='0.1.0',
-                                website='https://github.com/Nokse22/tactics',
-                                issue_url='https://github.com/Nokse22/tactics/issues',
+                                website='https://github.com/Nokse22/ultimate-tactic',
+                                issue_url='https://github.com/Nokse22/ultimate-tactic/issues',
                                 developers=['Nokse'],
                                 copyright='© 2023 Nokse')
         about.present()

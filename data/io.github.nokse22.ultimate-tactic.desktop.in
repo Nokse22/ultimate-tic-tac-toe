@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=Tactics
-Exec=tactics
-Icon=io.github.nokse22.tactics
+Name=Ultimate Tactic
+Exec=ultimate-tactic
+Icon=io.github.nokse22.ultimate-tactic
 Terminal=false
 Type=Application
 Categories=GTK;Game;tictactoe;

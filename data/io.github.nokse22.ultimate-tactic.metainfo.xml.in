@@ -2,7 +2,7 @@
 <component type="desktop">
   <name>Tactics</name>
   <developer_name>Nokse</developer_name>
-	<id>io.github.nokse22.tactics.desktop</id>
+	<id>io.github.nokse22.ultimate-tactic.desktop</id>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0-or-later</project_license>
   <summary>Play Ultimate Tic Tac Toe</summary>
@@ -13,10 +13,10 @@
 
   <content_rating type="oars-1.0"></content_rating>
 
-  <launchable type="desktop-id">io.github.nokse22.tactics.desktop</launchable>
+  <launchable type="desktop-id">io.github.nokse22.ultimate-tactic.desktop</launchable>
 
-  <url type="homepage">https://github.com/Nokse22/tactics</url>
-  <url type="bugtracker">https://github.com/Nokse22/tactics/issues</url>
+  <url type="homepage">https://github.com/Nokse22/ultimate-tactic</url>
+  <url type="bugtracker">https://github.com/Nokse22/ultimate-tactic/issues</url>
 
   <releases>
     <release version="0.1.0" date="2023-08-30">
@@ -32,7 +32,7 @@
 
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/Nokse22/tactics/master/data/resources/screenshot%201.png</image>
+      <image>https://raw.githubusercontent.com/Nokse22/ultimate-tactic/master/data/resources/screenshot%201.png</image>
     </screenshot>
   </screenshots>
 

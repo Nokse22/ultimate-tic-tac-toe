@@ -1,9 +1,9 @@
 {
-    "app-id" : "io.github.nokse22.tactics",
+    "app-id" : "io.github.nokse22.ultimate-tactic",
     "runtime" : "org.gnome.Platform",
     "runtime-version" : "44",
     "sdk" : "org.gnome.Sdk",
-    "command" : "tactics",
+    "command" : "ultimate-tactic",
     "finish-args" : [
         "--share=network",
         "--share=ipc",
@@ -24,13 +24,13 @@
     ],
     "modules" : [
         {
-            "name" : "tactics",
+            "name" : "ultimate-tactic",
             "builddir" : true,
             "buildsystem" : "meson",
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "https://github.com/nokse22/tactics.git",
+                    "url" : "https://github.com/nokse22/ultimate-tactic.git",
                     "branch": "master"
                 }
             ]

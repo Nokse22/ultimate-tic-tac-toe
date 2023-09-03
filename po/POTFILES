@@ -1,6 +1,6 @@
-data/io.github.nokse22.tactics.desktop.in
-data/io.github.nokse22.tactics.metainfo.xml.in
-data/io.github.nokse22.tactics.gschema.xml
+data/io.github.nokse22.ultimate-tactic.desktop.in
+data/io.github.nokse22.ultimate-tactic.metainfo.xml.in
+data/io.github.nokse22.ultimate-tactic.gschema.xml
 src/main.py
 src/window.py
 src/window.ui
