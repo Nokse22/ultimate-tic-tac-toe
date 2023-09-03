@@ -2,8 +2,8 @@ pkgdatadir = get_option('prefix') / get_option('datadir') / meson.project_name()
 moduledir = pkgdatadir / 'ultimate_tactic'
 gnome = import('gnome')
 
-gnome.compile_resources('ultimate-tactic',
-  'ultimate-tactic.gresource.xml',
+gnome.compile_resources('ultimate-tic-tac-toe',
+  'ultimate-tic-tac-toe.gresource.xml',
   gresource_bundle: true,
   install: true,
   install_dir: pkgdatadir,
@@ -18,8 +18,8 @@ conf.set('localedir', get_option('prefix') / get_option('localedir'))
 conf.set('pkgdatadir', pkgdatadir)
 
 configure_file(
-  input: 'ultimate-tactic.in',
-  output: 'ultimate-tactic',
+  input: 'ultimate-tic-tac-toe.in',
+  output: 'ultimate-tic-tac-toe',
   configuration: conf,
   install: true,
   install_dir: get_option('bindir'),

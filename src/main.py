@@ -24,7 +24,7 @@ gi.require_version('Gtk', '4.0')
 gi.require_version('Adw', '1')
 
 from gi.repository import Gtk, Gio, Adw, Gdk
-from .window import TacticsWindow
+from .window import UltimateTicTacToeWindow
 
 import threading
 
@@ -32,7 +32,7 @@ class TacticsApplication(Adw.Application):
     """The main application singleton class."""
 
     def __init__(self):
-        super().__init__(application_id='io.github.nokse22.ultimate-tactic',
+        super().__init__(application_id='io.github.nokse22.ultimate-tic-tac-toe',
                          flags=Gio.ApplicationFlags.DEFAULT_FLAGS)
         self.create_action('quit', lambda *_: self.quit(), ['<primary>q'])
         self.create_action('about', self.on_about_action)
@@ -138,18 +138,18 @@ If a move is played so that it is to win a small board by the rules of normal ti
         """
         self.win = self.props.active_window
         if not self.win:
-            self.win = TacticsWindow(application=self)
+            self.win = UltimateTicTacToeWindow(application=self)
         self.win.present()
 
     def on_about_action(self, widget, _):
         """Callback for the app.about action."""
         about = Adw.AboutWindow(transient_for=self.props.active_window,
-                                application_name='Ultimate Tactic',
-                                application_icon='io.github.nokse22.ultimate-tactic',
+                                application_name='Ultimate Tic Tac Toe',
+                                application_icon='io.github.nokse22.ultimate-tic-tac-toe',
                                 developer_name='Nokse',
                                 version='0.1.0',
-                                website='https://github.com/Nokse22/ultimate-tactic',
-                                issue_url='https://github.com/Nokse22/ultimate-tactic/issues',
+                                website='https://github.com/Nokse22/ultimate-tic-tac-toe',
+                                issue_url='https://github.com/Nokse22/ultimate-tic-tac-toe/issues',
                                 developers=['Nokse'],
                                 copyright='© 2023 Nokse')
         about.present()

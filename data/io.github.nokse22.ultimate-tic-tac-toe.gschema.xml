@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="ultimate-tic-tac-toe">
+	<schema id="io.github.nokse22.ultimate-tic-tac-toe" path="/io/github/nokse22/ultimate-tic-tac-toe/">
+	</schema>
+</schemalist>

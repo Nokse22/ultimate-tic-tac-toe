@@ -25,8 +25,8 @@ from gi.repository import GLib
 import random
 import time
 
-class TacticsWindow(Adw.ApplicationWindow):
-    __gtype_name__ = 'UltimateTacticWindow'
+class UltimateTicTacToeWindow(Adw.ApplicationWindow):
+    __gtype_name__ = 'UltimateTicTacToeWindow'
 
     label = Gtk.Template.Child()
 
@@ -54,13 +54,13 @@ class TacticsWindow(Adw.ApplicationWindow):
         section.append(_("Restart"), "app.restart")
         section.append(_("How to play"), "app.rules")
         section.append(_("Keyboard shortcuts"), "win.show-help-overlay")
-        section.append(_("About Ultimate Tactic"), "app.about")
+        section.append(_("About Ultimate Tic Tac Toe"), "app.about")
         menu_button.set_menu_model(menu)
         self.headerbar.pack_end(menu_button)
 
         layout_box.append(self.headerbar)
         self.set_content(layout_box)
-        self.set_title("Ultimate Tactic")
+        self.set_title("Ultimate Tic Tac Toe")
 
         self.big_grid = Gtk.Grid(#width_request=300, height_request=300,
                 column_homogeneous=True, row_homogeneous=True,

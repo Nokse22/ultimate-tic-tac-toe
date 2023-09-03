@@ -27,6 +27,6 @@ jobs:
       - uses: actions/checkout@v3
       - uses: flatpak/flatpak-github-actions/flatpak-builder@v4
         with:
-          bundle: io.github.nokse22.ultimate-tactic.flatpak
-          manifest-path: io.github.nokse22.ultimate-tactic.json
+          bundle: io.github.nokse22.ultimate-tic-tac-toe.flatpak
+          manifest-path: io.github.nokse22.ultimate-tic-tac-toe.json
           cache-key: flatpak-builder-${{ github.sha }}

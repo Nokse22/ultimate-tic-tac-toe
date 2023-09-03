@@ -1,9 +1,9 @@
 {
-    "app-id" : "io.github.nokse22.ultimate-tactic",
+    "app-id" : "io.github.nokse22.ultimate-tic-tac-toe",
     "runtime" : "org.gnome.Platform",
     "runtime-version" : "44",
     "sdk" : "org.gnome.Sdk",
-    "command" : "ultimate-tactic",
+    "command" : "ultimate-tic-tac-toe",
     "finish-args" : [
         "--share=network",
         "--share=ipc",
@@ -24,13 +24,13 @@
     ],
     "modules" : [
         {
-            "name" : "ultimate-tactic",
+            "name" : "ultimate-tic-tac-toe",
             "builddir" : true,
             "buildsystem" : "meson",
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "https://github.com/nokse22/ultimate-tactic.git",
+                    "url" : "https://github.com/nokse22/ultimate-tic-tac-toe.git",
                     "branch": "master"
                 }
             ]

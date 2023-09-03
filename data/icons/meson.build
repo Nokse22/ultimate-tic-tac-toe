@@ -1,4 +1,4 @@
-application_id = 'io.github.nokse22.ultimate-tactic'
+application_id = 'io.github.nokse22.ultimate-tic-tac-toe'
 
 scalable_dir = 'hicolor' / 'scalable' / 'apps'
 install_data(

@@ -1,1 +1,1 @@
-i18n.gettext('ultimate-tactic', preset: 'glib')
+i18n.gettext('ultimate-tic-tac-toe', preset: 'glib')
