@@ -1,6 +1,6 @@
 <img height="128" src="data/icons/hicolor/scalable/apps/io.github.nokse22.ultimate-tic-tac-toe.svg" align="left"/>
 
-# Ultimate tactic
+# Ultimate Tic Tac Toe
   [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
   [![made-with-python](https://img.shields.io/badge/Made%20with-Python-ff7b3f.svg)](https://www.python.org/)
   [![Downloads](https://img.shields.io/badge/dynamic/json?color=brightgreen&label=Flathub%20Downloads&query=%24.installs_total&url=https%3A%2F%2Fflathub.org%2Fapi%2Fv2%2Fstats%2Fio.github.nokse22.ultimate-tic-tac-toe)](https://flathub.org/apps/details/io.github.nokse22.ultimate-tic-tac-toe)
@@ -27,7 +27,7 @@ If a move is played so that it is to win a small board by the rules of normal ti
   </div>
 
 ## Installation
-### Tactics is available on
+### Ultimate Tic Tac Toe is available on
 <a href='https://flathub.org/apps/io.github.nokse22.ultimate-tic-tac-toe'><img height='80' alt='Download on Flathub' src='https://dl.flathub.org/assets/badges/flathub-badge-en.png'/></a>
 <h>&emsp;</h> <a href="https://snapcraft.io/tactics"><img height='80' alt="Get it from the Snap Store" src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg"/></a>
 
