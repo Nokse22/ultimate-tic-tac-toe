@@ -20,25 +20,26 @@
 
   <releases>
   	<release version="0.1.3" date="2023-08-04">
-		<description>
-			<p>Fixed bug</p>
+		  <description>
+			  <p>Fixed bug</p>
    			<p>Updated metadata</p>
-		</description>
+		    <p>Icon improvements</p>
+		  </description>
   	</release>
    	<release version="0.1.2" date="2023-08-02">
-		<description>
-			<p>Fixed bug</p>
-		</description>
+		  <description>
+			  <p>Fixed bug</p>
+		  </description>
   	</release>
   	<release version="0.1.1" date="2023-08-01">
-		<description>
-			<p>Changed name</p>
-		</description>
+		  <description>
+			  <p>Changed name</p>
+		  </description>
   	</release>
-	<release version="0.1.0" date="2023-08-30">
-		<description>
+	  <release version="0.1.0" date="2023-08-30">
+		  <description>
 			  <p>First release</p>
-		</description>
+		  </description>
   	</release>
   </releases>
 
