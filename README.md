@@ -29,7 +29,7 @@ If a move is played so that it is to win a small board by the rules of normal ti
 ## Installation
 ### Ultimate Tic Tac Toe is available on
 <a href='https://flathub.org/apps/io.github.nokse22.ultimate-tic-tac-toe'><img height='80' alt='Download on Flathub' src='https://dl.flathub.org/assets/badges/flathub-badge-en.png'/></a>
-<h>&emsp;</h> <a href="https://snapcraft.io/tactics"><img height='80' alt="Get it from the Snap Store" src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg"/></a>
+<h>&emsp;</h> <a href="https://snapcraft.io/ultimate-tic-tac-toe"><img height='80' alt="Get it from the Snap Store" src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg"/></a>
 
 ### From source
 
