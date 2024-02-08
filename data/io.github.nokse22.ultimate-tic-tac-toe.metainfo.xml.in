@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-  <name>Tactics</name>
+  <name>Ultimate Tic Tac Toe</name>
   <developer_name>Nokse</developer_name>
 	<id>io.github.nokse22.ultimate-tic-tac-toe.desktop</id>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0-or-later</project_license>
-  <summary>Play Ultimate Tic Tac Toe</summary>
+  <summary>(Tic Tac Toe)²</summary>
 	<description>
-	  <p>Play Ultimate Tic Tac Toe with your friends or against the algorithm. You can read the rules in the game.
+	  <p>Play with your friends or against the algorithm. You can read the rules in the game.
 	  </p>
 	</description>
 
@@ -19,11 +19,28 @@
   <url type="bugtracker">https://github.com/Nokse22/ultimate-tic-tac-toe/issues</url>
 
   <releases>
-    <release version="0.1.0" date="2023-08-30">
+  	<release version="0.1.3" date="2023-08-04">
+		  <description>
+			  <p>Fixed bug</p>
+   			<p>Updated metadata</p>
+		    <p>Icon improvements</p>
+		  </description>
+  	</release>
+   	<release version="0.1.2" date="2023-08-02">
+		  <description>
+			  <p>Fixed bug</p>
+		  </description>
+  	</release>
+  	<release version="0.1.1" date="2023-08-01">
+		  <description>
+			  <p>Changed name</p>
+		  </description>
+  	</release>
+	  <release version="0.1.0" date="2023-08-30">
 		  <description>
 			  <p>First release</p>
 		  </description>
-	  </release>
+  	</release>
   </releases>
 
   <categories>
