@@ -79,6 +79,7 @@
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/Nokse22/ultimate-tic-tac-toe/master/data/resources/screenshot%201.png</image>
+      <caption>A started game of Ultimate Tic Tac Toe</caption>
     </screenshot>
   </screenshots>
 
