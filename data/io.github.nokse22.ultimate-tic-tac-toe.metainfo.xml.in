@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
   <name>Ultimate Tic Tac Toe</name>
-  <developer_name>Nokse</developer_name>
 	<id>io.github.nokse22.ultimate-tic-tac-toe</id>
   <provides>
     <id>io.github.nokse22.ultimate-tic-tac-toe.desktop</id>
@@ -13,6 +12,10 @@
 	  <p>Play with your friends or against the algorithm. You can read the rules in the game.
 	  </p>
 	</description>
+
+  <developer id="io.github.nokse22">
+    <name translate="no">Nokse</name>
+  </developer>
 
   <content_rating type="oars-1.0"></content_rating>
 
