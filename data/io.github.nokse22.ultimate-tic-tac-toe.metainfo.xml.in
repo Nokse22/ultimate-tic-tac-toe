@@ -2,7 +2,10 @@
 <component type="desktop">
   <name>Ultimate Tic Tac Toe</name>
   <developer_name>Nokse</developer_name>
-	<id>io.github.nokse22.ultimate-tic-tac-toe.desktop</id>
+	<id>io.github.nokse22.ultimate-tic-tac-toe</id>
+  <provides>
+    <id>io.github.nokse22.ultimate-tic-tac-toe.desktop</id>
+  </provides>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0-or-later</project_license>
   <summary>(Tic Tac Toe)²</summary>
