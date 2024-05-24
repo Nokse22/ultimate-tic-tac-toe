@@ -18,12 +18,15 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from gi.repository import Adw
-from gi.repository import Gtk
+from gi.repository import Gtk, GdkPixbuf
 
 from .player_id_enum import PlayerID
 
+@Gtk.Template(resource_path='/io/github/nokse22/ultimate-tic-tac-toe/ui/tic_button.ui')
 class TicButton(Gtk.Button):
     __gtype_name__ = 'TicButton'
+
+    image = Gtk.Template.Child()
 
     played_by = PlayerID.N
 
@@ -33,21 +36,21 @@ class TicButton(Gtk.Button):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
+        self.x_pixbuf = GdkPixbuf.Pixbuf.new_from_resource_at_scale("/io/github/nokse22/ultimate-tic-tac-toe/images/cross-large-symbolic.svg", -1, 100, True)
+        self.o_pixbuf = GdkPixbuf.Pixbuf.new_from_resource_at_scale("/io/github/nokse22/ultimate-tic-tac-toe/images/circle-outline-thick-symbolic.svg", -1, 100, True)
+
         self.add_css_class("tile-button")
 
     def get_coords(self):
         return (self.x, self.y)
 
     def set_played_by(self, played):
+        self.played_by = played
         match played:
             case PlayerID.X:
-                self.set_icon_name("cross-large-symbolic")
-                self.add_css_class("error")
-                self.played_by = PlayerID.X
+                self.image.set_from_pixbuf(self.x_pixbuf)
             case PlayerID.O:
-                self.set_icon_name("circle-outline-thick-symbolic")
-                self.add_css_class("accent")
-                self.played_by = PlayerID.O
+                self.image.set_from_pixbuf(self.o_pixbuf)
 
         self.set_sensitive(False)
 
@@ -55,6 +58,6 @@ class TicButton(Gtk.Button):
         self.played_by = PlayerID.N
         self.remove_css_class("accent")
         self.remove_css_class("error")
-        self.set_icon_name("")
+        self.image.set_from_pixbuf()
         self.set_sensitive(True)
                 

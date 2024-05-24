@@ -43,8 +43,8 @@ class TicTacToeGrid(Adw.Bin):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-
-        print(self.grid)
+        self.x_pixbuf = GdkPixbuf.Pixbuf.new_from_resource_at_scale("/io/github/nokse22/ultimate-tic-tac-toe/images/cross-large-symbolic.svg", -1, 400, True)
+        self.o_pixbuf = GdkPixbuf.Pixbuf.new_from_resource_at_scale("/io/github/nokse22/ultimate-tic-tac-toe/images/circle-outline-thick-symbolic.svg", -1, 400, True)
 
         for x in range(3):
             for y in range(3):
@@ -63,23 +63,16 @@ class TicTacToeGrid(Adw.Bin):
         self.won_by = player
         match player:
             case PlayerID.X:
-                pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale("/home/lorenzo/Projects/ultimate-tic-tac-toe/src/images/cross-large-symbolic.svg", -1, 100, True)
-                self.image.set_from_pixbuf(pixbuf)
-                # self.picture.set_resource("./images/cross-large-symbolic.svg")
-                # self.image.set_from_icon_name("cross-large-symbolic")
-                # self.image.set_from_file("/home/lorenzo/Projects/ultimate-tic-tac-toe/src/images/cross-large-symbolic.svg")
+                self.image.set_from_pixbuf(self.x_pixbuf)
             case PlayerID.O:
-                pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale("/home/lorenzo/Projects/ultimate-tic-tac-toe/src/images/circle-outline-thick-symbolic.svg", -1, 100, True)
-                self.image.set_from_pixbuf(pixbuf)
-                # self.image.set_from_icon_name("circle-outline-thick-symbolic")
-                # self.image.set_from_file("/home/lorenzo/Projects/ultimate-tic-tac-toe/src/images/circle-outline-thick-symbolic.svg")
-                # self.picture.set_resource("./images/circle-outline-thick-symbolic.svg")
+                self.image.set_from_pixbuf(self.o_pixbuf)
 
         GLib.timeout_add(500, self.stack.set_visible_child_name, "won_view")
 
     def reset(self):
         self.stack.set_visible_child_name("grid_view")
         self.set_sensitive(True)
+        self.won_by = PlayerID.N
         for x in range(3):
             for y in range(3):
                 child = self.get_child_at(x, y)

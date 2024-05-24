@@ -88,12 +88,12 @@ class UltimateTicTacToeWindow(Adw.ApplicationWindow):
             match self.current_player:
                 case PlayerID.X:
                     self.player_label.set_label("Player 2")
-                    self.player_label.add_css_class("error")
-                    self.player_label.remove_css_class("accent")
-                case PlayerID.O:
-                    self.player_label.set_label("Player 1")
                     self.player_label.add_css_class("accent")
                     self.player_label.remove_css_class("error")
+                case PlayerID.O:
+                    self.player_label.set_label("Player 1")
+                    self.player_label.add_css_class("error")
+                    self.player_label.remove_css_class("accent")
 
         if self.game_over:
             self.game_is_over()
