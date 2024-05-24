@@ -36,7 +36,6 @@ class TacticsApplication(Adw.Application):
                          flags=Gio.ApplicationFlags.DEFAULT_FLAGS)
         self.create_action('quit', lambda *_: self.quit(), ['<primary>q'])
         self.create_action('about', self.on_about_action)
-        self.create_action('preferences', self.on_preferences_action)
         self.create_action('restart', self.on_restart_action)
         self.create_action('rules', self.on_rules_action)
 
@@ -51,33 +50,8 @@ class TacticsApplication(Adw.Application):
         self.singleplayer_action.set_enabled(False)
 
         css = '''
-        .small-grid {
-            border: 5px solid @window_bg_color;
-            background-color: @window_bg_color;
-            padding: 10px;
-
-        }
-        .button {
-            transition: background-color 0.2s ease-in, color 0.6s ease-in;
-            padding: 5px;
-            font-size: 140%;
-        }
-        .image {
+        .tile-button {
             padding: 0px;
-        }
-        .label {
-            transition: color 0.3s ease-in;
-        }
-        .big-grid {
-            background-color: @window_fg_color;
-        }
-        .won-1{
-            border: 5px solid @destructive_color;
-            transition: border 1s ease-in;
-        }
-        .won-2{
-            border: 5px solid @accent_bg_color;
-            transition: border 1s ease-in;
         }
         '''
 
@@ -89,41 +63,35 @@ class TacticsApplication(Adw.Application):
             Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
     def on_rules_action(self, widget, _):
-        window = Adw.ApplicationWindow(title="How to play", width_request=300, height_request=300)
-        window.set_default_size(500, 600)
-        window.set_transient_for(self.win)
-        box = Gtk.Box(orientation=1)
-        window.set_content(box)
-        headerbar = Adw.HeaderBar(css_classes=[""])
-        box.append(headerbar)
+        rules_dialog = Adw.Dialog(title="How to play", width_request=360, height_request=400)
+        toolbar_view = Adw.ToolbarView()
+        rules_dialog.set_child(toolbar_view)
+        headerbar = Adw.HeaderBar()
+        toolbar_view.add_top_bar(headerbar)
         text = '''Just like in regular tic-tac-toe, the two players (X and O) take turns, starting with X. The game starts with X playing wherever they want in any of the 81 empty spots. Next the opponent plays, however they are forced to play in the small board indicated by the relative location of the previous move. For example, if X plays in the top right square of a small (3 × 3) board, then O has to play in the small board located at the top right of the larger board. Playing any of the available spots decides in which small board the next player plays.
 
 If a move is played so that it is to win a small board by the rules of normal tic-tac-toe, then the entire small board is marked as won by the player in the larger board. Once a small board is won by a player or it is filled completely, no more moves may be played in that board. If a player is sent to such a board, then that player may play in any other board. Game play ends when either a player wins the larger board or there are no legal moves remaining, in which case the game is a draw.
         '''
         scrolled = Gtk.ScrolledWindow(vexpand=True)
-        box2 = Gtk.Box(orientation=1)
+        # box2 = Gtk.Box(orientation=1)
         # image = Gtk.Image.new_from_icon_name("explanation")
         # image.set_pixel_size(400)
         # image.add_css_class("image")
         # box2.append(image)
-        box2.append(Gtk.Label(label=text, wrap=True, margin_start=12, margin_end=12, margin_top=12))
-        scrolled.set_child(box2)
+        toolbar_view.set_content(scrolled)
+        scrolled.set_child(Gtk.Label(label=text, wrap=True, margin_start=12, margin_end=12, margin_top=12))
 
-        box.append(scrolled)
-
-        window.present()
+        rules_dialog.present(self.win)
 
     def on_singleplayer_action(self, widget, _):
-        print("multiplayer")
         self.win.multiplayer = False
         self.win.restart()
         self.singleplayer_action.set_enabled(False)
         self.multiplayer_action.set_enabled(True)
 
     def on_multiplayer_action(self, widget, _):
-        print("multiplayer")
-        self.win.restart()
         self.win.multiplayer = True
+        self.win.restart()
         self.singleplayer_action.set_enabled(True)
         self.multiplayer_action.set_enabled(False)
 
@@ -143,20 +111,16 @@ If a move is played so that it is to win a small board by the rules of normal ti
 
     def on_about_action(self, widget, _):
         """Callback for the app.about action."""
-        about = Adw.AboutWindow(transient_for=self.props.active_window,
+        about = Adw.AboutDialog(
                                 application_name='Ultimate Tic Tac Toe',
                                 application_icon='io.github.nokse22.ultimate-tic-tac-toe',
                                 developer_name='Nokse',
-                                version='0.1.3',
+                                version='0.2.0',
                                 website='https://github.com/Nokse22/ultimate-tic-tac-toe',
                                 issue_url='https://github.com/Nokse22/ultimate-tic-tac-toe/issues',
                                 developers=['Nokse'],
                                 copyright='© 2023 Nokse')
-        about.present()
-
-    def on_preferences_action(self, widget, _):
-        """Callback for the app.preferences action."""
-        print('app.preferences action activated')
+        about.present(self.win)
 
     def create_action(self, name, callback, shortcuts=None):
         """Add an application action.
