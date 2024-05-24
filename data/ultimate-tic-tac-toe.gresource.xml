@@ -3,8 +3,9 @@
   <gresource prefix="/io/github/nokse22/ultimate-tic-tac-toe">
     <file preprocess="xml-stripblanks">ui/window.ui</file>
     <file preprocess="xml-stripblanks">ui/tic_tac_toe_grid.ui</file>
+    <file preprocess="xml-stripblanks">ui/tic_button.ui</file>
     <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
-    <file preprocess="xml-stripblanks">icons/16x16/actions/circle-outline-thick-symbolic.svg</file>
-    <file preprocess="xml-stripblanks">icons/16x16/actions/cross-large-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">images/circle-outline-thick-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">images/cross-large-symbolic.svg</file>
   </gresource>
 </gresources>

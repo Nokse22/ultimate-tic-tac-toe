@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Created with Cambalache 0.90.2 -->
+<interface>
+  <!-- interface-name tile.ui -->
+  <requires lib="gtk" version="4.0"/>
+  <template class="TicButton" parent="GtkButton">
+    <property name="css-classes">tile-button</property>
+    <property name="hexpand">True</property>
+    <property name="width-request">24</property>
+
+    <child>
+      <object class="GtkImage" id="image">
+        <property name="valign">fill</property>
+        <property name="vexpand">true</property>
+        <property name="margin-top">3</property>
+        <property name="margin-bottom">3</property>
+        <property name="margin-start">3</property>
+        <property name="margin-end">3</property>
+      </object>
+    </child>
+  </template>
+</interface>
