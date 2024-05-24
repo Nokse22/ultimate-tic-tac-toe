@@ -25,176 +25,148 @@ from gi.repository import GLib
 import random
 import time
 
+from .player_id_enum import PlayerID
+from .tic_tac_toe_grid import TicTacToeGrid
+
+@Gtk.Template(resource_path='/io/github/nokse22/ultimate-tic-tac-toe/ui/window.ui')
 class UltimateTicTacToeWindow(Adw.ApplicationWindow):
     __gtype_name__ = 'UltimateTicTacToeWindow'
 
-    label = Gtk.Template.Child()
+    player_label = Gtk.Template.Child()
+    field_grid = Gtk.Template.Child()
+    toast_overlay = Gtk.Template.Child()
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        layout_box = Gtk.Box(orientation=1)
-        self.headerbar = Adw.HeaderBar(css_classes=["flat"])
-        self.player_turn = Gtk.Label(label="Player 1", css_classes=["error", "label"], margin_start=6)
-        self.headerbar.pack_start(self.player_turn)
-
-        menu_button = Gtk.MenuButton()
-        menu_button.set_icon_name("open-menu-symbolic")
-        menu = Gio.Menu()
-
-        section = Gio.Menu()
-        section.append(_("Single player"), "app.singleplayer")
-        section.append(_("Multiplayer"), "app.multiplayer")
-
-        menu.append_section(None, section)
-
-        section = Gio.Menu()
-        menu.append_section(None, section)
-
-        section.append(_("Restart"), "app.restart")
-        section.append(_("How to play"), "app.rules")
-        section.append(_("Keyboard shortcuts"), "win.show-help-overlay")
-        section.append(_("About Ultimate Tic Tac Toe"), "app.about")
-        menu_button.set_menu_model(menu)
-        self.headerbar.pack_end(menu_button)
-
-        layout_box.append(self.headerbar)
-        self.set_content(layout_box)
-        self.set_title("Ultimate Tic Tac Toe")
-
-        self.big_grid = Gtk.Grid(#width_request=300, height_request=300,
-                column_homogeneous=True, row_homogeneous=True,
-                column_spacing=2, row_spacing=2, css_classes=["big-grid"],
-                halign=Gtk.Align.FILL, valign=Gtk.Align.CENTER, vexpand=True,
-                margin_top=12, margin_bottom=12, margin_start=12, margin_end=12)
-        self.clamp = Adw.Clamp()
-        self.clamp.set_child(self.big_grid)
-        self.toast_overlay = Adw.ToastOverlay()
-        self.toast_overlay.set_child(self.clamp)
-        layout_box.append(self.toast_overlay)
-
-        self.buttons = []
-
-        for x in range(3):
-            for y in range(3):
-                grid = Gtk.Grid(name="", column_spacing=6, row_spacing=6, vexpand=True, hexpand=True, css_classes=["small-grid"])
-                for g_x in range(3):
-                    for g_y in range(3):
-                        button = Gtk.Button(name=f"{x},{y},{g_x},{g_y}",
-                                vexpand=True, hexpand=True,
-                                width_request=50, height_request=50,
-                                css_classes=["button"], label="")
-                        button.connect("clicked", self.on_button_clicked)
-                        grid.attach(button, g_x, g_y, 1, 1)
-                        self.buttons.append(button)
-                self.big_grid.attach(grid, x, y, 1, 1)
-
         self.player_sign = "X"
         self.multiplayer = False
-        self.player_gen = self.player_number_generator()
-        self.current_player = 1
+        self.current_player = PlayerID.X
 
         self.game_over = False
-
-    def restart(self):
-        for button in self.buttons:
-            button.set_label("")
-            button.remove_css_class("error")
-            button.remove_css_class("accent")
-            button.set_sensitive(True)
 
         for x in range(3):
             for y in range(3):
-                grid = self.big_grid.get_child_at(x, y)
-                grid.set_sensitive(True)
-                grid.remove_css_class("won-1")
-                grid.remove_css_class("won-2")
-                grid.set_name("")
+                child = self.field_grid.get_child_at(x, y)
+                child.x = x
+                child.y = y
 
-        if self.current_player == 1:
-            self.current_player = next(self.player_gen)
+        self.restart()
 
-        self.player_turn.set_label("Player 1")
-        self.player_turn.remove_css_class("accent")
-        self.player_turn.add_css_class("error")
+    def restart(self):
+        for x in range(3):
+            for y in range(3):
+                child = self.field_grid.get_child_at(x, y).reset()
+
+        self.current_player = PlayerID.X
+
+        if not self.multiplayer:
+            self.player_label.set_visible(False)
+        else:
+            self.player_label.set_visible(True)
+
+        self.player_label.set_label("Player 1")
+        self.player_label.remove_css_class("accent")
+        self.player_label.add_css_class("error")
 
         self.game_over = False
 
-    def player_number_generator(self):
-        player_number = 1
-        while True:
-            yield player_number
-            player_number = 1 if player_number == 2 else 2
+    def next_player(self, player):
+        match player:
+            case PlayerID.X:
+                return PlayerID.O
+            case PlayerID.O:
+                return PlayerID.X
 
-    def on_button_clicked(self, btn):
-        self.select_button(btn)
+    @Gtk.Template.Callback("on_button_clicked")
+    def on_button_clicked(self, parent, btn):
+        self.select_tile(parent, btn)
 
-        print(self.multiplayer)
+        self.current_player = self.next_player(self.current_player)
+
+        if self.multiplayer:
+            match self.current_player:
+                case PlayerID.X:
+                    self.player_label.set_label("Player 2")
+                    self.player_label.add_css_class("error")
+                    self.player_label.remove_css_class("accent")
+                case PlayerID.O:
+                    self.player_label.set_label("Player 1")
+                    self.player_label.add_css_class("accent")
+                    self.player_label.remove_css_class("error")
 
         if self.game_over:
             self.game_is_over()
             return
 
-        if not self.multiplayer and self.current_player == 1:
-            coordinates = btn.get_name().split(",")
-            board_x = int(coordinates[2])
-            board_y = int(coordinates[3])
-            grid = self.big_grid.get_child_at(board_x, board_y)
-            if grid.get_name() in ["X", "O", "D"]:
-                board = self.get_big_grid_board()
+        if not self.multiplayer and self.current_player == PlayerID.O:
+            next_grid = self.field_grid.get_child_at(btn.x, btn.y)
+
+            # If the next grid is won of full it will select the best next board
+            #       where to play to win the big game
+
+            print(f"next grid is won by {next_grid.won_by}")
+
+            if next_grid.won_by in [PlayerID.X, PlayerID.O, PlayerID.F]:
+                board = self.get_field_grid_board()
                 if board != None:
                     start = time.time()
                     best_move = self.find_best_move(board)
-                    print(board)
                     print(f"Best move: {best_move} in {time.time() - start}")
-                    grid = self.big_grid.get_child_at(best_move[1], best_move[0])
+                    next_grid = self.field_grid.get_child_at(best_move[1], best_move[0])
 
-                if grid.get_name() in ["X", "O", "D"]:
-                    while grid.get_name() in ["X", "O", "D"]:
+                # If the selected move is already played or is full it will select a
+                #       new board to play at random
+
+                if next_grid.won_by in [PlayerID.X, PlayerID.O, PlayerID.F]:
+                    while next_grid.won_by in [PlayerID.X, PlayerID.O, PlayerID.F]:
                         board_x = random.randint(0, 2)
                         board_y = random.randint(0, 2)
-                        grid = self.big_grid.get_child_at(board_x, board_y)
-                        print(grid.get_name())
+                        next_grid = self.field_grid.get_child_at(board_x, board_y)
+                        print(next_grid.won_by)
 
-            board = self.get_small_grid_board(grid)
+            # Once the new board to play is set it will find the best move for
+            #       this board and select it
+
+            board = self.get_small_grid_board(next_grid)
             start = time.time()
             best_move = self.find_best_move(board)
-            print(board)
             print(f"Best move: {best_move} in {time.time() - start}")
-            button = grid.get_child_at(best_move[1], best_move[0])
-            self.select_button(button)
+            button = next_grid.get_child_at(best_move[1], best_move[0])
+            self.select_tile(next_grid, button)
+            self.current_player = self.next_player(self.current_player)
 
         if self.game_over:
             self.game_is_over()
 
-    def get_small_grid_board(self, grid):
+    def get_small_grid_board(self, small_grid):
         board = []
         for y in range(3):
             row = []
             for x in range(3):
-                play = grid.get_child_at(x, y).get_label()
-                if play == "":
+                played = small_grid.get_child_at(x, y).played_by
+                if played == PlayerID.N:
                     row.append(0)
-                elif play == "X":
+                elif played == PlayerID.X:
                     row.append(-1)
-                elif play == "O":
+                elif played == PlayerID.O:
                     row.append(1)
             board.append(row)
         return board
 
-    def get_big_grid_board(self):
+    def get_field_grid_board(self):
         board = []
         for y in range(3):
             row = []
             for x in range(3):
-                play = self.big_grid.get_child_at(x, y).get_name()
-                if play == "X":
+                play = self.field_grid.get_child_at(x, y).won_by
+                if play == PlayerID.X:
                     row.append(-1)
-                elif play == "O":
+                elif play == PlayerID.O:
                     row.append(1)
-                elif play == "":
+                elif play == PlayerID.N:
                     row.append(0)
-                elif play == "D":
+                elif play == PlayerID.F:
                     return None
             board.append(row)
         return board
@@ -202,130 +174,111 @@ class UltimateTicTacToeWindow(Adw.ApplicationWindow):
     def game_is_over(self):
         for x in range(3):
             for y in range(3):
-                grid = self.big_grid.get_child_at(x, y)
+                grid = self.field_grid.get_child_at(x, y)
                 grid.set_sensitive(False)
         return
 
-    def select_button(self, btn):
-        self.current_player = next(self.player_gen)
-
-        coordinates = btn.get_name().split(",")
-
-        player_label = ""
+    def select_tile(self, parent, btn):
         print(f"Current player: Player {self.current_player}")
 
-        match self.current_player:
-            case 1:
-                player_label = "X"
-                btn.set_label(player_label)
-                btn.add_css_class("error")
-            case 2:
-                player_label = "O"
-                btn.set_label(player_label)
-                btn.add_css_class("accent")
-        btn.set_sensitive(False)
+        btn.set_played_by(self.current_player)
 
-        grid = self.big_grid.get_child_at(int(coordinates[0]), int(coordinates[1]))
-        state = self.check_win(grid, player_label)
-        if state == None:
-            grid.set_sensitive(False)
-            grid.set_name("D")
-        elif state:
-            grid.set_sensitive(False)
-            grid.add_css_class("won-"+str(self.current_player))
-            grid.set_name(player_label)
-            state = self.big_check_win(player_label)
-            if state == None:
+        # Check if the just played board has been won of is full
+
+        played_grid = self.field_grid.get_child_at(parent.x, parent.y)
+        state = self.check_win(played_grid, self.current_player)
+        if state == None: # Board is full
+            played_grid.set_sensitive(False)
+            played_grid.won_by = PlayerID.F
+
+        elif state: # Board has been won
+
+            # Check if the big game has been won
+
+            played_grid.won(self.current_player)
+            state = self.big_check_win(self.current_player)
+            if state == None: # Full -> Tie
                 self.game_over = True
                 toast = Adw.Toast(title=f"It's a tie", button_label="Restart", action_name="app.restart")
                 self.toast_overlay.add_toast(toast)
-                self.make_all_not_sensitive()
+                self.set_all_sensitivity(False)
                 return
-            elif state:
+            elif state: # Won by the current player
                 self.game_over = True
-                if self.current_player == 2 and self.multiplayer == False:
+                if self.multiplayer:
+                    toast = Adw.Toast(title=f"Player {self.current_player} won", button_label="Restart", action_name="app.restart")
+                elif self.current_player == PlayerID.O:
                     toast = Adw.Toast(title=f"You lost!", button_label="Restart", action_name="app.restart")
                 else:
-                    toast = Adw.Toast(title=f"Player {self.current_player} won", button_label="Restart", action_name="app.restart")
+                    toast = Adw.Toast(title=f"You won!", button_label="Restart", action_name="app.restart")
+
                 self.toast_overlay.add_toast(toast)
-                self.make_all_not_sensitive()
+                self.set_all_sensitivity(False)
                 return
 
-        self.make_all_not_sensitive()
+        self.set_all_sensitivity(False)
 
-        active_grid_x = int(coordinates[2])
-        active_grid_y = int(coordinates[3])
+        # Get the new board where to play and if it's not been won it is set
+        #       as sensitive to play, but if it's won or full it will set all boards
+        #       as playable
 
-        grid = self.big_grid.get_child_at(active_grid_x, active_grid_y)
-        style_context = grid.get_style_context()
-        if grid.get_name() not in ["X", "O", "D"]:
-            grid.set_sensitive(True)
+        next_grid = self.field_grid.get_child_at(btn.x, btn.y)
+        if next_grid.won_by not in [PlayerID.X, PlayerID.O, PlayerID.F]:
+            next_grid.set_sensitive(True)
         else:
             for x in range(3):
                 for y in range(3):
-                    grid = self.big_grid.get_child_at(x, y)
-                    style_context = grid.get_style_context()
-                    if grid.get_name() not in ["X", "O", "D"]:
-                        grid.set_sensitive(True)
+                    next_grid = self.field_grid.get_child_at(x, y)
+                    if next_grid.won_by not in [PlayerID.X, PlayerID.O, PlayerID.F]:
+                        next_grid.set_sensitive(True)
 
-        match self.current_player:
-            case 1:
-                self.player_turn.set_label("Player 2")
-                self.player_turn.remove_css_class("error")
-                self.player_turn.add_css_class("accent")
-            case 2:
-                self.player_turn.set_label("Player 1")
-                self.player_turn.remove_css_class("accent")
-                self.player_turn.add_css_class("error")
-
-    def check_win(self, grid, player_symbol):
+    def check_win(self, grid, player):
         for row in range(3):
-            if all(grid.get_child_at(col, row).get_label() == player_symbol for col in range(3)):
+            if all(grid.get_child_at(col, row).played_by == player for col in range(3)):
                 return True
 
         for col in range(3):
-            if all(grid.get_child_at(col, row).get_label() == player_symbol for row in range(3)):
+            if all(grid.get_child_at(col, row).played_by == player for row in range(3)):
                 return True
 
-        if all(grid.get_child_at(i, i).get_label() == player_symbol for i in range(3)) or \
-           all(grid.get_child_at(i, 2 - i).get_label() == player_symbol for i in range(3)):
+        if all(grid.get_child_at(i, i).played_by == player for i in range(3)) or \
+           all(grid.get_child_at(i, 2 - i).played_by == player for i in range(3)):
             return True
 
         full = True
         for x in range(3):
             for y in range(3):
-                label = grid.get_child_at(x, y).get_label()
-                if label not in ["X", "O"]:
+                if grid.get_child_at(x, y).played_by == PlayerID.N:
                     full = False
         if full:
             return None
 
         return False
 
-    def make_all_not_sensitive(self):
+    def set_all_sensitivity(self, sens):
         for x in range(3):
             for y in range(3):
-                grid = self.big_grid.get_child_at(x, y)
-                grid.set_sensitive(False)
+                grid = self.field_grid.get_child_at(x, y)
+                grid.set_sensitive(sens)
 
-    def big_check_win(self, player_symbol):
+    def big_check_win(self, player):
+        print(f"Checking win for {player}")
         for row in range(3):
-            if all(self.big_grid.get_child_at(col, row).get_name() == player_symbol for col in range(3)):
+            if all(self.field_grid.get_child_at(col, row).won_by == player for col in range(3)):
                 return True
 
         for col in range(3):
-            if all(self.big_grid.get_child_at(col, row).get_name() == player_symbol for row in range(3)):
+            if all(self.field_grid.get_child_at(col, row).won_by == player for row in range(3)):
                 return True
 
-        if all(self.big_grid.get_child_at(i, i).get_name() == player_symbol for i in range(3)) or \
-           all(self.big_grid.get_child_at(i, 2 - i).get_name() == player_symbol for i in range(3)):
+        if all(self.field_grid.get_child_at(i, i).won_by == player for i in range(3)) or \
+           all(self.field_grid.get_child_at(i, 2 - i).won_by == player for i in range(3)):
             return True
 
         full = True
         for x in range(3):
             for y in range(3):
-                label = self.big_grid.get_child_at(x, y).get_name()
-                if label not in ["X", "O", "D"]:
+                if self.field_grid.get_child_at(x, y).won_by == PlayerID.N:
                     full = False
         if full:
             return None
