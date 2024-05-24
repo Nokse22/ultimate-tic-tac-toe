@@ -20,8 +20,23 @@
 
   <url type="homepage">https://github.com/Nokse22/ultimate-tic-tac-toe</url>
   <url type="bugtracker">https://github.com/Nokse22/ultimate-tic-tac-toe/issues</url>
+  <url type="vcs-browser">https://github.com/Nokse22/ultimate-tic-tac-toe</url>
+  <url type="translate">https://github.com/Nokse22/ultimate-tic-tac-toe/tree/master/po</url>
+  <url type="donation">https://ko-fi.com/nokse22</url>
+
+  <branding>
+    <color type="primary" scheme_preference="light">#</color>
+    <color type="primary" scheme_preference="dark">#</color>
+  </branding>
 
   <releases>
+    <release version="0.2.0" date="2024-05-24">
+		  <description>
+			  <p>Improved UI with newest Libadwaita widgets</p>
+   			<p>Switched colors</p>
+		    <p>Made it adaptive</p>
+		  </description>
+  	</release>
   	<release version="0.1.3" date="2023-08-04">
 		  <description>
 			  <p>Fixed bug</p>
