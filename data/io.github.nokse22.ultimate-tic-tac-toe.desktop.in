@@ -4,5 +4,5 @@ Exec=ultimate-tic-tac-toe
 Icon=io.github.nokse22.ultimate-tic-tac-toe
 Terminal=false
 Type=Application
-Categories=GTK;Game;tictactoe;
+Categories=GTK;Game;
 StartupNotify=true
