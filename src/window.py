@@ -80,6 +80,8 @@ class UltimateTicTacToeWindow(Adw.ApplicationWindow):
 
     @Gtk.Template.Callback("on_button_clicked")
     def on_button_clicked(self, parent, btn):
+        self.field_grid.get_child_at(parent.x, parent.y).set_sensitive(False)
+
         self.select_tile(parent, btn)
 
         self.current_player = self.next_player(self.current_player)
