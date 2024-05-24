@@ -25,9 +25,18 @@
   <url type="donation">https://ko-fi.com/nokse22</url>
 
   <branding>
-    <color type="primary" scheme_preference="light">#</color>
-    <color type="primary" scheme_preference="dark">#</color>
+    <color type="primary" scheme_preference="light">#3584e4</color>
+    <color type="primary" scheme_preference="dark">#c01c28</color>
   </branding>
+
+  <recommends>
+    <display_length compare="ge">360</display_length>
+  </recommends>
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </supports>
 
   <releases>
     <release version="0.2.0" date="2024-05-24">
