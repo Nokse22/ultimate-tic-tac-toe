@@ -5,6 +5,7 @@
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
   <template class="TicTacToeGrid" parent="AdwBin">
+    <property name="hexpand">True</property>
     <child>
       <object class="GtkStack" id="stack">
         <property name="transition-duration">190</property>

@@ -127,6 +127,7 @@
               <object class="GtkLabel" id="player_label">
                 <property name="label">Player 1</property>
                 <property name="css-classes">accent</property>
+                <property name="css-classes">title</property>
               </object>
             </child>
             <child type="end">
