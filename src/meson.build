@@ -1,13 +1,4 @@
 pkgdatadir = get_option('prefix') / get_option('datadir') / meson.project_name()
-moduledir = pkgdatadir / 'ultimate_tactic'
-gnome = import('gnome')
-
-gnome.compile_resources('ultimate-tic-tac-toe',
-  'ultimate-tic-tac-toe.gresource.xml',
-  gresource_bundle: true,
-  install: true,
-  install_dir: pkgdatadir,
-)
 
 python = import('python')
 
@@ -30,6 +21,9 @@ ultimate_tactic_sources = [
   '__init__.py',
   'main.py',
   'window.py',
+  'player_id_enum.py',
+  'tic_button.py',
+  'tic_tac_toe_grid.py',
 ]
 
 install_data(ultimate_tactic_sources, install_dir: moduledir)
