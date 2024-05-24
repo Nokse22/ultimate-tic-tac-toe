@@ -23,7 +23,7 @@ import gi
 gi.require_version('Gtk', '4.0')
 gi.require_version('Adw', '1')
 
-from gi.repository import Gtk, Gio, Adw, Gdk
+from gi.repository import Gtk, Gio, Adw, Gdk, GLib
 from .window import UltimateTicTacToeWindow
 
 import threading
@@ -39,15 +39,14 @@ class TacticsApplication(Adw.Application):
         self.create_action('restart', self.on_restart_action)
         self.create_action('rules', self.on_rules_action)
 
-        self.multiplayer_action = Gio.SimpleAction.new('multiplayer', None)
-        self.multiplayer_action.connect("activate", self.on_multiplayer_action)
-        self.add_action(self.multiplayer_action)
+        player_action = Gio.SimpleAction.new_stateful(
+            "players",
+            GLib.VariantType.new("s"),
+            GLib.Variant("s", "singleplayer"),
+        )
+        player_action.connect("activate", self.on_players_changed)
 
-        self.singleplayer_action = Gio.SimpleAction.new('singleplayer', None)
-        self.singleplayer_action.connect("activate", self.on_singleplayer_action)
-        self.add_action(self.singleplayer_action)
-
-        self.singleplayer_action.set_enabled(False)
+        self.add_action(player_action)
 
         css = '''
         .tile-button {
@@ -61,6 +60,11 @@ class TacticsApplication(Adw.Application):
             Gdk.Display.get_default(),
             css_provider,
             Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
+
+    def on_players_changed(self, action: Gio.SimpleAction, state: GLib.Variant):
+        action.set_state(state)
+        self.win.multiplayer = False if state.get_string() == "singleplayer" else True
+        self.win.restart()
 
     def on_rules_action(self, widget, _):
         rules_dialog = Adw.Dialog(title="How to play", width_request=360, height_request=400)
@@ -82,18 +86,6 @@ If a move is played so that it is to win a small board by the rules of normal ti
         scrolled.set_child(Gtk.Label(label=text, wrap=True, margin_start=12, margin_end=12, margin_top=12))
 
         rules_dialog.present(self.win)
-
-    def on_singleplayer_action(self, widget, _):
-        self.win.multiplayer = False
-        self.win.restart()
-        self.singleplayer_action.set_enabled(False)
-        self.multiplayer_action.set_enabled(True)
-
-    def on_multiplayer_action(self, widget, _):
-        self.win.multiplayer = True
-        self.win.restart()
-        self.singleplayer_action.set_enabled(True)
-        self.multiplayer_action.set_enabled(False)
 
     def on_restart_action(self, widget, _):
         self.win.restart()

@@ -144,11 +144,13 @@
   <menu id="primary_menu">
     <section>
       <item>
-        <attribute name="action">app.singleplayer</attribute>
+        <attribute name="action">app.players</attribute>
+        <attribute name="target">singleplayer</attribute>
         <attribute name="label">Single Player</attribute>
       </item>
       <item>
-        <attribute name="action">app.multiplayer</attribute>
+        <attribute name="action">app.players</attribute>
+        <attribute name="target">multiplayer</attribute>
         <attribute name="label">Multiplayer</attribute>
       </item>
     </section>
