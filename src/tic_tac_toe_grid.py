@@ -52,9 +52,6 @@ class TicTacToeGrid(Adw.Bin):
                 child.x = x
                 child.y = y
 
-    def set_child_player_by(x, y, player_id):
-        self.childs[x, y].played_by = player_id
-
     @Gtk.Template.Callback("on_button_clicked")
     def on_button_clicked(self, btn):
         self.emit("button-clicked", btn)
