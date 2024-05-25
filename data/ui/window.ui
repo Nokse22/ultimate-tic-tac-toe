@@ -125,7 +125,7 @@
           <object class="AdwHeaderBar">
             <child type="start">
               <object class="GtkLabel" id="player_label">
-                <property name="label">Player 1</property>
+                <property name="label" translatable="yes">Player 1</property>
                 <property name="css-classes">accent</property>
                 <property name="css-classes">title</property>
               </object>
@@ -146,18 +146,18 @@
       <item>
         <attribute name="action">app.players</attribute>
         <attribute name="target">singleplayer</attribute>
-        <attribute name="label">Single Player</attribute>
+        <attribute name="label" translatable="yes">Single Player</attribute>
       </item>
       <item>
         <attribute name="action">app.players</attribute>
         <attribute name="target">multiplayer</attribute>
-        <attribute name="label">Multiplayer</attribute>
+        <attribute name="label" translatable="yes">Multiplayer</attribute>
       </item>
     </section>
     <section>
       <item>
         <attribute name="action">app.restart</attribute>
-        <attribute name="label">Restart</attribute>
+        <attribute name="label" translatable="yes">Restart</attribute>
       </item>
     </section>
     <section>

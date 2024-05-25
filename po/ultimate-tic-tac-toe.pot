@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-25 14:30+0200\n"
+"POT-Creation-Date: 2024-05-25 15:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -79,4 +79,24 @@ msgstr ""
 
 #: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:81
 msgid "A started game of Ultimate Tic Tac Toe"
+msgstr ""
+
+#: src/window.py:68 src/window.py:96 data/ui/window.ui:128
+msgid "Player 1"
+msgstr ""
+
+#: src/window.py:92
+msgid "Player 2"
+msgstr ""
+
+#: data/ui/window.ui:149
+msgid "Single Player"
+msgstr ""
+
+#: data/ui/window.ui:154
+msgid "Multiplayer"
+msgstr ""
+
+#: data/ui/window.ui:160
+msgid "Restart"
 msgstr ""
