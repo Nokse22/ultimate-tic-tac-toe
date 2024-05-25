@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ultimate-tic-tac-toe\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-25 14:30+0200\n"
-"PO-Revision-Date: 2024-05-25 20:03+0530\n"
+"POT-Creation-Date: 2024-05-25 15:17+0200\n"
+"PO-Revision-Date: 2024-05-25 20:33+0530\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <indlinux-hindi@lists.sourceforge.net>\n"
 "Language: hi\n"
@@ -82,3 +82,23 @@ msgstr "पहली रिलीज"
 #: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:81
 msgid "A started game of Ultimate Tic Tac Toe"
 msgstr "अल्टीमेट टिक टैक टो का एक आरंभिक खेल"
+
+#: src/window.py:68 src/window.py:96 data/ui/window.ui:128
+msgid "Player 1"
+msgstr "खिलाड़ी 1"
+
+#: src/window.py:92
+msgid "Player 2"
+msgstr "खिलाड़ी 2"
+
+#: data/ui/window.ui:149
+msgid "Single Player"
+msgstr "एकल खिलाड़ी"
+
+#: data/ui/window.ui:154
+msgid "Multiplayer"
+msgstr "बहुखिलाड़ी"
+
+#: data/ui/window.ui:160
+msgid "Restart"
+msgstr "पुनर्प्रारंभ"
