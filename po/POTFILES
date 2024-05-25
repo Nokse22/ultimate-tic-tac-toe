@@ -3,4 +3,4 @@ data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in
 data/io.github.nokse22.ultimate-tic-tac-toe.gschema.xml
 src/main.py
 src/window.py
-src/window.ui
+data/ui/window.ui
