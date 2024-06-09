@@ -1,0 +1,108 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# twlvnn kraftwerk <kraft_werk@tutanota.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ultimate-tic-tac-toe\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-25 15:17+0200\n"
+"PO-Revision-Date: 2024-06-09 17:33+0200\n"
+"Last-Translator: twlvnn kraftwerk <kraft_werk@tutanota.com>\n"
+"Language-Team: Bulgarian <dict-notifications@fsa-bg.org>\n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 46.1\n"
+
+#: data/io.github.nokse22.ultimate-tic-tac-toe.desktop.in:3
+#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:3
+msgid "Ultimate Tic Tac Toe"
+msgstr "Върховен морски шах"
+
+#: data/io.github.nokse22.ultimate-tic-tac-toe.desktop.in:9
+msgid "GNOME;GTK;Game;"
+msgstr "игра;"
+
+#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:10
+msgid "(Tic Tac Toe)²"
+msgstr "(Морски шах)²"
+
+#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:12
+msgid ""
+"Play with your friends or against the algorithm. You can read the rules in "
+"the game."
+msgstr ""
+"Играйте с приятелите си или срещу алгоритъма. Може да прочетете правилата в "
+"играта."
+
+#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:47
+msgid "Improved UI with newest Libadwaita widgets"
+msgstr ""
+"Подобрен е потребителския интерфейс с най-новите графични елементи на "
+"Libadwaita"
+
+#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:48
+msgid "Switched colors"
+msgstr "Сменени са цветовете"
+
+#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:49
+msgid "Made it adaptive"
+msgstr "Подобрен е потребителския интерфейс за малки и големи екрани"
+
+#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:50
+msgid "Added branding"
+msgstr "Добавена е търговската марка"
+
+#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:51
+msgid "Updated runtime"
+msgstr "Обновена е средата за изпълнение"
+
+#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:56
+#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:63
+msgid "Fixed bug"
+msgstr "Поправена е грешка"
+
+#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:57
+msgid "Updated metadata"
+msgstr "Обновени са метаданните"
+
+#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:58
+msgid "Icon improvements"
+msgstr "Подобрени са иконите"
+
+#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:68
+msgid "Changed name"
+msgstr "Променено е името"
+
+#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:73
+msgid "First release"
+msgstr "Първо издание"
+
+#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:81
+msgid "A started game of Ultimate Tic Tac Toe"
+msgstr "Започната игра на „Върховен морски шах“"
+
+#: src/window.py:68 src/window.py:96 data/ui/window.ui:128
+msgid "Player 1"
+msgstr "Играч 1"
+
+#: src/window.py:92
+msgid "Player 2"
+msgstr "Играч 2"
+
+#: data/ui/window.ui:149
+msgid "Single Player"
+msgstr "Самостоятелно"
+
+#: data/ui/window.ui:154
+msgid "Multiplayer"
+msgstr "За много играчи"
+
+#: data/ui/window.ui:160
+msgid "Restart"
+msgstr "Рестартиране"
