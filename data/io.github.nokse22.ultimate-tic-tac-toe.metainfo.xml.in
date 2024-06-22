@@ -47,6 +47,10 @@
 			  <p>Updated screenshots</p>
 		    <p>Fixed bug</p>
 		    <p>Changed default window size</p>
+		    <p>Added Bulgarian translation</p>
+		    <p>Added Spanish translation</p>
+		    <p>Added Hindi translation</p>
+		    <p>Added Italian translation</p>
 		  </description>
   	</release>
     <release version="0.2.0" date="2024-05-24">
