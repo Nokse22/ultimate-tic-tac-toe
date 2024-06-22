@@ -6,8 +6,8 @@
   <requires lib="gtk" version="4.12"/>
   <requires lib="libadwaita" version="1.4"/>
   <template class="UltimateTicTacToeWindow" parent="AdwApplicationWindow">
-    <property name="default-height">600</property>
-    <property name="default-width">400</property>
+    <property name="default-height">650</property>
+    <property name="default-width">600</property>
     <property name="height-request">360</property>
     <property name="title">Ultimate Tic Tac Toe</property>
     <property name="width-request">360</property>
