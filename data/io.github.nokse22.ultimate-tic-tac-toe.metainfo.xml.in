@@ -42,6 +42,13 @@
   </supports>
 
   <releases>
+    <release version="0.2.1" date="2024-06-23">
+		  <description>
+			  <p>Updated screenshots</p>
+		    <p>Fixed bug</p>
+		    <p>Changed default window size</p>
+		  </description>
+  	</release>
     <release version="0.2.0" date="2024-05-24">
 		  <description>
 			  <p>Improved UI with newest Libadwaita widgets</p>
