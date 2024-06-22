@@ -23,7 +23,7 @@ If a move is played so that it is to win a small board by the rules of normal ti
 
 
   <div align="center">
-  <img src="data/resources/screenshot 1.png" height="500"/>
+  <img src="data/resources/screenshot 1.png" max-height="500"/>
   </div>
 
 ## Installation
