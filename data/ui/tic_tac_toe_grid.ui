@@ -84,7 +84,6 @@
                 <child>
                   <object class="TicButton" id="col_1_row_2">
                     <signal name="clicked" handler="on_button_clicked"/>
-                    <signal name="clicked" handler="on_button_clicked"/>
                     <layout>
                       <property name="column">1</property>
                       <property name="row">2</property>
