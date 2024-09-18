@@ -18,22 +18,18 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import sys
-import gi
-
-gi.require_version('Gtk', '4.0')
-gi.require_version('Adw', '1')
 
 from gi.repository import Gtk, Gio, Adw, Gdk, GLib
 from .window import UltimateTicTacToeWindow
 
-import threading
 
 class TacticsApplication(Adw.Application):
     """The main application singleton class."""
 
     def __init__(self):
-        super().__init__(application_id='io.github.nokse22.ultimate-tic-tac-toe',
-                         flags=Gio.ApplicationFlags.DEFAULT_FLAGS)
+        super().__init__(
+            application_id='io.github.nokse22.ultimate-tic-tac-toe',
+            flags=Gio.ApplicationFlags.DEFAULT_FLAGS)
         self.create_action('quit', lambda *_: self.quit(), ['<primary>q'])
         self.create_action('about', self.on_about_action)
         self.create_action('restart', self.on_restart_action)
@@ -67,7 +63,8 @@ class TacticsApplication(Adw.Application):
         self.win.restart()
 
     def on_rules_action(self, widget, _):
-        rules_dialog = Adw.Dialog(title="How to play", width_request=360, height_request=400)
+        rules_dialog = Adw.Dialog(
+            title="How to play", width_request=360, height_request=400)
         toolbar_view = Adw.ToolbarView()
         rules_dialog.set_child(toolbar_view)
         headerbar = Adw.HeaderBar()
@@ -77,13 +74,16 @@ class TacticsApplication(Adw.Application):
 If a move is played so that it is to win a small board by the rules of normal tic-tac-toe, then the entire small board is marked as won by the player in the larger board. Once a small board is won by a player or it is filled completely, no more moves may be played in that board. If a player is sent to such a board, then that player may play in any other board. Game play ends when either a player wins the larger board or there are no legal moves remaining, in which case the game is a draw.
         '''
         scrolled = Gtk.ScrolledWindow(vexpand=True)
-        # box2 = Gtk.Box(orientation=1)
-        # image = Gtk.Image.new_from_icon_name("explanation")
-        # image.set_pixel_size(400)
-        # image.add_css_class("image")
-        # box2.append(image)
         toolbar_view.set_content(scrolled)
-        scrolled.set_child(Gtk.Label(label=text, wrap=True, margin_start=12, margin_end=12, margin_top=12))
+        scrolled.set_child(
+            Gtk.Label(
+                label=text,
+                wrap=True,
+                margin_start=12,
+                margin_end=12,
+                margin_top=12
+            )
+        )
 
         rules_dialog.present(self.win)
 
@@ -104,14 +104,14 @@ If a move is played so that it is to win a small board by the rules of normal ti
     def on_about_action(self, widget, _):
         """Callback for the app.about action."""
         about = Adw.AboutDialog(
-                                application_name='Ultimate Tic Tac Toe',
-                                application_icon='io.github.nokse22.ultimate-tic-tac-toe',
-                                developer_name='Nokse',
-                                version='0.2.1',
-                                website='https://github.com/Nokse22/ultimate-tic-tac-toe',
-                                issue_url='https://github.com/Nokse22/ultimate-tic-tac-toe/issues',
-                                developers=['Nokse'],
-                                copyright='© 2023 Nokse')
+            application_name='Ultimate Tic Tac Toe',
+            application_icon='io.github.nokse22.ultimate-tic-tac-toe',
+            developer_name='Nokse',
+            version='0.2.2',
+            website='https://github.com/Nokse22/ultimate-tic-tac-toe',
+            issue_url='https://github.com/Nokse22/ultimate-tic-tac-toe/issues',
+            developers=['Nokse'],
+            copyright='© 2023 Nokse')
         about.present(self.win)
 
     def create_action(self, name, callback, shortcuts=None):

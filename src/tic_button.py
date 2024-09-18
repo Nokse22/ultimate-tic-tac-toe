@@ -17,10 +17,10 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from gi.repository import Adw
 from gi.repository import Gtk, GdkPixbuf
 
 from .player_id_enum import PlayerID
+
 
 @Gtk.Template(resource_path='/io/github/nokse22/ultimate-tic-tac-toe/ui/tic_button.ui')
 class TicButton(Gtk.Button):
@@ -36,8 +36,10 @@ class TicButton(Gtk.Button):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.x_pixbuf = GdkPixbuf.Pixbuf.new_from_resource_at_scale("/io/github/nokse22/ultimate-tic-tac-toe/images/cross-large-symbolic.svg", -1, 100, True)
-        self.o_pixbuf = GdkPixbuf.Pixbuf.new_from_resource_at_scale("/io/github/nokse22/ultimate-tic-tac-toe/images/circle-outline-thick-symbolic.svg", -1, 100, True)
+        self.x_pixbuf = GdkPixbuf.Pixbuf.new_from_resource_at_scale(
+            "/io/github/nokse22/ultimate-tic-tac-toe/images/cross-large-symbolic.svg", -1, 100, True)
+        self.o_pixbuf = GdkPixbuf.Pixbuf.new_from_resource_at_scale(
+            "/io/github/nokse22/ultimate-tic-tac-toe/images/circle-outline-thick-symbolic.svg", -1, 100, True)
 
         self.add_css_class("tile-button")
 
@@ -60,4 +62,3 @@ class TicButton(Gtk.Button):
         self.remove_css_class("error")
         self.image.set_from_pixbuf()
         self.set_sensitive(True)
-                

@@ -24,6 +24,7 @@ from gi.repository import GObject, GLib, GdkPixbuf
 from .player_id_enum import PlayerID
 from .tic_button import TicButton
 
+
 @Gtk.Template(resource_path='/io/github/nokse22/ultimate-tic-tac-toe/ui/tic_tac_toe_grid.ui')
 class TicTacToeGrid(Adw.Bin):
     __gtype_name__ = 'TicTacToeGrid'
@@ -43,8 +44,10 @@ class TicTacToeGrid(Adw.Bin):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.x_pixbuf = GdkPixbuf.Pixbuf.new_from_resource_at_scale("/io/github/nokse22/ultimate-tic-tac-toe/images/cross-large-symbolic.svg", -1, 400, True)
-        self.o_pixbuf = GdkPixbuf.Pixbuf.new_from_resource_at_scale("/io/github/nokse22/ultimate-tic-tac-toe/images/circle-outline-thick-symbolic.svg", -1, 400, True)
+        self.x_pixbuf = GdkPixbuf.Pixbuf.new_from_resource_at_scale(
+            "/io/github/nokse22/ultimate-tic-tac-toe/images/cross-large-symbolic.svg", -1, 400, True)
+        self.o_pixbuf = GdkPixbuf.Pixbuf.new_from_resource_at_scale(
+            "/io/github/nokse22/ultimate-tic-tac-toe/images/circle-outline-thick-symbolic.svg", -1, 400, True)
 
         for x in range(3):
             for y in range(3):
