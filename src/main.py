@@ -107,7 +107,7 @@ If a move is played so that it is to win a small board by the rules of normal ti
             application_name='Ultimate Tic Tac Toe',
             application_icon='io.github.nokse22.ultimate-tic-tac-toe',
             developer_name='Nokse',
-            version='0.2.2',
+            version='1.0.0',
             website='https://github.com/Nokse22/ultimate-tic-tac-toe',
             issue_url='https://github.com/Nokse22/ultimate-tic-tac-toe/issues',
             developers=['Nokse'],

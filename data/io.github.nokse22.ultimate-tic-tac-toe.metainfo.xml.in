@@ -42,7 +42,7 @@
   </supports>
 
   <releases>
-    <release version="0.2.2" date="2024-09-18">
+    <release version="1.0.0" date="2024-09-18">
 		  <description>
 			  <ul>
 			    <li>Updated to GNOME 47</li>

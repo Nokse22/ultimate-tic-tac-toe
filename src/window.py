@@ -19,14 +19,13 @@
 
 from gi.repository import Adw
 from gi.repository import Gtk
-from gi.repository import Gio
-from gi.repository import GLib
 
 import random
 import time
 
 from .player_id_enum import PlayerID
 from .tic_tac_toe_grid import TicTacToeGrid
+
 
 @Gtk.Template(resource_path='/io/github/nokse22/ultimate-tic-tac-toe/ui/window.ui')
 class UltimateTicTacToeWindow(Adw.ApplicationWindow):
@@ -56,7 +55,7 @@ class UltimateTicTacToeWindow(Adw.ApplicationWindow):
     def restart(self):
         for x in range(3):
             for y in range(3):
-                child = self.field_grid.get_child_at(x, y).reset()
+                self.field_grid.get_child_at(x, y).reset()
 
         self.current_player = PlayerID.X
 
@@ -189,30 +188,42 @@ class UltimateTicTacToeWindow(Adw.ApplicationWindow):
 
         played_grid = self.field_grid.get_child_at(parent.x, parent.y)
         state = self.check_win(played_grid, self.current_player)
-        if state == None: # Board is full
+        if state is None:  # Board is full
             played_grid.set_sensitive(False)
             played_grid.won_by = PlayerID.F
 
-        elif state: # Board has been won
+        elif state:  # Board has been won
 
             # Check if the big game has been won
 
             played_grid.won(self.current_player)
             state = self.big_check_win(self.current_player)
-            if state == None: # Full -> Tie
+            if state is None:  # Full -> Tie
                 self.game_over = True
-                toast = Adw.Toast(title=f"It's a tie", button_label="Restart", action_name="app.restart")
+                toast = Adw.Toast(
+                    title="It's a tie",
+                    button_label="Restart",
+                    action_name="app.restart")
                 self.toast_overlay.add_toast(toast)
                 self.set_all_sensitivity(False)
                 return
-            elif state: # Won by the current player
+            elif state:  # Won by the current player
                 self.game_over = True
                 if self.multiplayer:
-                    toast = Adw.Toast(title=f"Player {self.current_player} won", button_label="Restart", action_name="app.restart")
+                    toast = Adw.Toast(
+                        title=f"Player {self.current_player} won",
+                        button_label="Restart",
+                        action_name="app.restart")
                 elif self.current_player == PlayerID.O:
-                    toast = Adw.Toast(title=f"You lost!", button_label="Restart", action_name="app.restart")
+                    toast = Adw.Toast(
+                        title="You lost!",
+                        button_label="Restart",
+                        action_name="app.restart")
                 else:
-                    toast = Adw.Toast(title=f"You won!", button_label="Restart", action_name="app.restart")
+                    toast = Adw.Toast(
+                        title="You won!",
+                        button_label="Restart",
+                        action_name="app.restart")
 
                 self.toast_overlay.add_toast(toast)
                 self.set_all_sensitivity(False)
@@ -322,7 +333,8 @@ class UltimateTicTacToeWindow(Adw.ApplicationWindow):
                 for col in range(3):
                     if board[row][col] == 0:
                         board[row][col] = 1
-                        score = self.minimax(board, depth + 1, alpha, beta, False)
+                        score = self.minimax(
+                            board, depth + 1, alpha, beta, False)
                         board[row][col] = 0
                         best_score = max(best_score, score)
                         alpha = max(alpha, best_score)
@@ -335,7 +347,8 @@ class UltimateTicTacToeWindow(Adw.ApplicationWindow):
                 for col in range(3):
                     if board[row][col] == 0:
                         board[row][col] = -1
-                        score = self.minimax(board, depth + 1, alpha, beta, True)
+                        score = self.minimax(
+                            board, depth + 1, alpha, beta, True)
                         board[row][col] = 0
                         best_score = min(best_score, score)
                         beta = min(beta, best_score)
@@ -354,7 +367,8 @@ class UltimateTicTacToeWindow(Adw.ApplicationWindow):
             for col in range(3):
                 if board[row][col] == 0:
                     board[row][col] = 1
-                    score = self.minimax(board, 0, float('-inf'), float('inf'), False)
+                    score = self.minimax(
+                        board, 0, float('-inf'), float('inf'), False)
                     board[row][col] = 0
                     if score > best_score:
                         best_score = score
