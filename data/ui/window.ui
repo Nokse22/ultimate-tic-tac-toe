@@ -9,7 +9,7 @@
     <property name="default-height">650</property>
     <property name="default-width">600</property>
     <property name="height-request">360</property>
-    <property name="title">Ultimate Tic Tac Toe</property>
+    <property name="title" translatable="yes">Ultimate Tic Tac Toe</property>
     <property name="width-request">360</property>
     <child>
       <object class="AdwToolbarView">
@@ -163,17 +163,17 @@
     <section>
       <item>
         <attribute name="action">app.rules</attribute>
-        <attribute name="label">Game Rules</attribute>
+        <attribute name="label" translatable="yes">Game Rules</attribute>
       </item>
     </section>
     <section>
       <item>
         <attribute name="action">win.shortcuts</attribute>
-        <attribute name="label">Keyboard Shortcut</attribute>
+        <attribute name="label" translatable="yes">Keyboard Shortcut</attribute>
       </item>
       <item>
         <attribute name="action">app.about</attribute>
-        <attribute name="label">About Ultimate Tic Tac Toe</attribute>
+        <attribute name="label" translatable="yes">About Ultimate Tic Tac Toe</attribute>
       </item>
     </section>
   </menu>

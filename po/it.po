@@ -100,11 +100,11 @@ msgstr "Se"
 
 #: src/main.py:75
 msgid "plays in the top-right square of a small board,"
-msgstr "gioca nella casella in alto a destra della tabella piccola,"
+msgstr "gioca nella casella in alto a destra di una tabella piccola,"
 
 #: src/main.py:75
 msgid "must play in the top-right small board of the large grid."
-msgstr "deve giocare nella casella in alto a destra della tabella grande."
+msgstr "deve giocare nella tabella in alto a destra della tabella grande."
 
 #: src/main.py:76
 msgid "This continues, with each move determining the next board."
