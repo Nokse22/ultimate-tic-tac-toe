@@ -22,7 +22,15 @@ import sys
 from gi.repository import Gtk, Gio, Adw, Gdk, GLib
 from .window import UltimateTicTacToeWindow
 
-from gettext import gettext as _
+from os import path
+
+import gettext
+from gettext import gettext as translate
+
+LOCALE_DIR = path.join(
+    path.dirname(__file__).split('ultimate-tic-tac-toe')[0], 'locale')
+gettext.bindtextdomain('ultimate-tic-tac-toe', LOCALE_DIR)
+gettext.textdomain('ultimate-tic-tac-toe')
 
 
 class TacticsApplication(Adw.Application):
@@ -53,7 +61,7 @@ class TacticsApplication(Adw.Application):
 
     def on_rules_action(self, *args):
         rules_dialog = Adw.Dialog(
-            title=_("How to play"),
+            title=translate("How to play"),
             content_width=500,
             content_height=500)
         toolbar_view = Adw.ToolbarView()
@@ -64,24 +72,24 @@ class TacticsApplication(Adw.Application):
         toolbar_view.set_content(scrolled)
 
         # Translators Note:
-        # The following strings are to translate the rules page
-        rules_text = "<span font=\"16\" weight=\"bold\" rise=\"10000\">" + _("Basic Rules") + "</span>\n" \
-             " • " + _("Two players:") + " <b>X</b> " + _("and") + " <b>O</b>\n" \
-             " • <b>X</b> " + _("goes first") + "\n" \
-             " • " + _("Players take turns, aiming to win small boards and eventually the large board.") + "\n\n" \
-             "<span font=\"16\" weight=\"bold\" rise=\"10000\">" + _("Gameplay") + "</span>\n" \
-             " 1. <b>X</b> " + _("starts by playing in") + " <i>" + _("any") + "</i> " + _("spot.") + "\n" \
-             " 2. " + _("The next player plays in the small board matching the location of the previous move.") + "\n" \
-             "<i>" + _("Example:") + "</i> " + _("If") + " <b>X</b> " + _("plays in the top-right square of a small board,") + " <b>O</b> " + _("must play in the top-right small board of the large grid.") + "\n" \
-             " 3. " + _("This continues, with each move determining the next board.") + "\n\n" \
-             "<span font=\"16\" weight=\"bold\" rise=\"10000\">" + _("Winning and Moves") + "</span>\n" \
-             " • " + _("Win a small board by following regular tic-tac-toe rules.") + "\n" \
-             " • " + _("When a small board is won or filled, it cannot be played in again.") + "\n" \
-             " • " + _("If directed to a full board, you can play in") + " <i>" + _("any") + "</i> " + _("open board.") + "\n\n" \
-             "<span font=\"16\" weight=\"bold\" rise=\"10000\">" + _("End of the Game") + "</span>\n" \
-             " • " + _("A player wins by winning three small boards in a row (horizontally, vertically, or diagonally) on the large grid.") + "\n" \
-             " • " + _("If no legal moves remain, the game ends in a draw.") + "\n\n" \
-             + _("Have Fun!") + "\n"
+        # The following strings are to translate( the rules page
+        rules_text = "<span font=\"16\" weight=\"bold\" rise=\"10000\">" + translate("Basic Rules") + "</span>\n" \
+             " • " + translate("Two players:") + " <b>X</b> " + translate("and") + " <b>O</b>\n" \
+             " • <b>X</b> " + translate("goes first") + "\n" \
+             " • " + translate("Players take turns, aiming to win small boards and eventually the large board.") + "\n\n" \
+             "<span font=\"16\" weight=\"bold\" rise=\"10000\">" + translate("Gameplay") + "</span>\n" \
+             " 1. <b>X</b> " + translate("starts by playing in") + " <i>" + translate("any") + "</i> " + translate("spot.") + "\n" \
+             " 2. " + translate("The next player plays in the small board matching the location of the previous move.") + "\n" \
+             "<i>" + translate("Example:") + "</i> " + translate("If") + " <b>X</b> " + translate("plays in the top-right square of a small board,") + " <b>O</b> " + translate("must play in the top-right small board of the large grid.") + "\n" \
+             " 3. " + translate("This continues, with each move determining the next board.") + "\n\n" \
+             "<span font=\"16\" weight=\"bold\" rise=\"10000\">" + translate("Winning and Moves") + "</span>\n" \
+             " • " + translate("Win a small board by following regular tic-tac-toe rules.") + "\n" \
+             " • " + translate("When a small board is won or filled, it cannot be played in again.") + "\n" \
+             " • " + translate("If directed to a full board, you can play in") + " <i>" + translate("any") + "</i> " + translate("open board.") + "\n\n" \
+             "<span font=\"16\" weight=\"bold\" rise=\"10000\">" + translate("End of the Game") + "</span>\n" \
+             " • " + translate("A player wins by winning three small boards in a row (horizontally, vertically, or diagonally) on the large grid.") + "\n" \
+             " • " + translate("If no legal moves remain, the game ends in a draw.") + "\n\n" \
+             + translate("Have Fun!") + "\n"
 
         scrolled.set_child(
             Gtk.Label(
