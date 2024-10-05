@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-25 15:17+0200\n"
+"POT-Creation-Date: 2024-10-05 19:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,56 +36,117 @@ msgid ""
 "the game."
 msgstr ""
 
-#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:47
-msgid "Improved UI with newest Libadwaita widgets"
+#: src/main.py:56
+msgid "How to play"
 msgstr ""
 
-#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:48
-msgid "Switched colors"
+#: src/main.py:68
+msgid "Basic Rules"
 msgstr ""
 
-#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:49
-msgid "Made it adaptive"
+#: src/main.py:69
+msgid "Two players:"
 msgstr ""
 
-#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:50
-msgid "Added branding"
+#: src/main.py:69
+msgid "and"
 msgstr ""
 
-#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:51
-msgid "Updated runtime"
+#: src/main.py:70
+msgid "goes first"
 msgstr ""
 
-#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:56
-#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:63
-msgid "Fixed bug"
+#: src/main.py:71
+msgid ""
+"Players take turns, aiming to win small boards and eventually the large "
+"board."
 msgstr ""
 
-#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:57
-msgid "Updated metadata"
+#: src/main.py:72
+msgid "Gameplay"
 msgstr ""
 
-#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:58
-msgid "Icon improvements"
+#: src/main.py:73
+msgid "starts by playing in"
 msgstr ""
 
-#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:68
-msgid "Changed name"
+#: src/main.py:73 src/main.py:80
+msgid "any"
 msgstr ""
 
-#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:73
-msgid "First release"
+#: src/main.py:73
+msgid "spot."
 msgstr ""
 
-#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:81
-msgid "A started game of Ultimate Tic Tac Toe"
+#: src/main.py:74
+msgid ""
+"The next player plays in the small board matching the location of the "
+"previous move."
 msgstr ""
 
-#: src/window.py:68 src/window.py:96 data/ui/window.ui:128
+#: src/main.py:75
+msgid "Example:"
+msgstr ""
+
+#: src/main.py:75
+msgid "If"
+msgstr ""
+
+#: src/main.py:75
+msgid "plays in the top-right square of a small board,"
+msgstr ""
+
+#: src/main.py:75
+msgid "must play in the top-right small board of the large grid."
+msgstr ""
+
+#: src/main.py:76
+msgid "This continues, with each move determining the next board."
+msgstr ""
+
+#: src/main.py:77
+msgid "Winning and Moves"
+msgstr ""
+
+#: src/main.py:78
+msgid "Win a small board by following regular tic-tac-toe rules."
+msgstr ""
+
+#: src/main.py:79
+msgid "When a small board is won or filled, it cannot be played in again."
+msgstr ""
+
+#: src/main.py:80
+msgid "If directed to a full board, you can play in"
+msgstr ""
+
+#: src/main.py:80
+msgid "open board."
+msgstr ""
+
+#: src/main.py:81
+msgid "End of the Game"
+msgstr ""
+
+#: src/main.py:82
+msgid ""
+"A player wins by winning three small boards in a row (horizontally, "
+"vertically, or diagonally) on the large grid."
+msgstr ""
+
+#: src/main.py:83
+msgid "If no legal moves remain, the game ends in a draw."
+msgstr ""
+
+#: src/main.py:84
+msgid "Have Fun!"
+msgstr ""
+
+#: src/window.py:67 src/window.py:95 data/ui/window.ui:128
 msgid "Player 1"
 msgstr ""
 
-#: src/window.py:92
+#: src/window.py:91
 msgid "Player 2"
 msgstr ""
 

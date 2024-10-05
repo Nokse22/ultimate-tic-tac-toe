@@ -22,6 +22,8 @@ import sys
 from gi.repository import Gtk, Gio, Adw, Gdk, GLib
 from .window import UltimateTicTacToeWindow
 
+from gettext import gettext as _
+
 
 class TacticsApplication(Adw.Application):
     """The main application singleton class."""
@@ -44,40 +46,47 @@ class TacticsApplication(Adw.Application):
 
         self.add_action(player_action)
 
-        css = '''
-        .tile-button {
-            padding: 0px;
-        }
-        '''
-
-        css_provider = Gtk.CssProvider()
-        css_provider.load_from_data(css, -1)
-        Gtk.StyleContext.add_provider_for_display(
-            Gdk.Display.get_default(),
-            css_provider,
-            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
-
-    def on_players_changed(self, action: Gio.SimpleAction, state: GLib.Variant):
+    def on_players_changed(self, action, state):
         action.set_state(state)
         self.win.multiplayer = False if state.get_string() == "singleplayer" else True
         self.win.restart()
 
-    def on_rules_action(self, widget, _):
+    def on_rules_action(self, *args):
         rules_dialog = Adw.Dialog(
-            title="How to play", width_request=360, height_request=400)
+            title=_("How to play"),
+            content_width=500,
+            content_height=500)
         toolbar_view = Adw.ToolbarView()
         rules_dialog.set_child(toolbar_view)
         headerbar = Adw.HeaderBar()
         toolbar_view.add_top_bar(headerbar)
-        text = '''Just like in regular tic-tac-toe, the two players (X and O) take turns, starting with X. The game starts with X playing wherever they want in any of the 81 empty spots. Next the opponent plays, however they are forced to play in the small board indicated by the relative location of the previous move. For example, if X plays in the top right square of a small (3 × 3) board, then O has to play in the small board located at the top right of the larger board. Playing any of the available spots decides in which small board the next player plays.
-
-If a move is played so that it is to win a small board by the rules of normal tic-tac-toe, then the entire small board is marked as won by the player in the larger board. Once a small board is won by a player or it is filled completely, no more moves may be played in that board. If a player is sent to such a board, then that player may play in any other board. Game play ends when either a player wins the larger board or there are no legal moves remaining, in which case the game is a draw.
-        '''
         scrolled = Gtk.ScrolledWindow(vexpand=True)
         toolbar_view.set_content(scrolled)
+
+        # Translators Note:
+        # The following strings are to translate the rules page
+        rules_text = "<span font=\"16\" weight=\"bold\" rise=\"10000\">" + _("Basic Rules") + "</span>\n" \
+             " • " + _("Two players:") + " <b>X</b> " + _("and") + " <b>O</b>\n" \
+             " • <b>X</b> " + _("goes first") + "\n" \
+             " • " + _("Players take turns, aiming to win small boards and eventually the large board.") + "\n\n" \
+             "<span font=\"16\" weight=\"bold\" rise=\"10000\">" + _("Gameplay") + "</span>\n" \
+             " 1. <b>X</b> " + _("starts by playing in") + " <i>" + _("any") + "</i> " + _("spot.") + "\n" \
+             " 2. " + _("The next player plays in the small board matching the location of the previous move.") + "\n" \
+             "<i>" + _("Example:") + "</i> " + _("If") + " <b>X</b> " + _("plays in the top-right square of a small board,") + " <b>O</b> " + _("must play in the top-right small board of the large grid.") + "\n" \
+             " 3. " + _("This continues, with each move determining the next board.") + "\n\n" \
+             "<span font=\"16\" weight=\"bold\" rise=\"10000\">" + _("Winning and Moves") + "</span>\n" \
+             " • " + _("Win a small board by following regular tic-tac-toe rules.") + "\n" \
+             " • " + _("When a small board is won or filled, it cannot be played in again.") + "\n" \
+             " • " + _("If directed to a full board, you can play in") + " <i>" + _("any") + "</i> " + _("open board.") + "\n\n" \
+             "<span font=\"16\" weight=\"bold\" rise=\"10000\">" + _("End of the Game") + "</span>\n" \
+             " • " + _("A player wins by winning three small boards in a row (horizontally, vertically, or diagonally) on the large grid.") + "\n" \
+             " • " + _("If no legal moves remain, the game ends in a draw.") + "\n\n" \
+             + _("Have Fun!") + "\n"
+
         scrolled.set_child(
             Gtk.Label(
-                label=text,
+                label=rules_text,
+                use_markup=True,
                 wrap=True,
                 margin_start=12,
                 margin_end=12,
