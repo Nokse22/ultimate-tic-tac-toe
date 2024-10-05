@@ -5,16 +5,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-25 14:30+0200\n"
-"PO-Revision-Date: 2024-05-25 14:47+0200\n"
+"POT-Creation-Date: 2024-10-05 19:39+0200\n"
+"PO-Revision-Date: 2024-10-06 00:37+0200\n"
 "Last-Translator: Albano Battistella <albanobattistella@gmail.com>\n"
 "Language-Team: Italian <LL@li.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #: data/io.github.nokse22.ultimate-tic-tac-toe.desktop.in:3
 #: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:3
@@ -37,47 +38,170 @@ msgstr ""
 "Gioca con i tuoi amici o contro l'algoritmo. Puoi leggere le regole nel "
 "gioco."
 
-#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:47
-msgid "Improved UI with newest Libadwaita widgets"
-msgstr "Interfaccia utente migliorata con i widget Libadwaita più recenti"
+#: src/main.py:56
+msgid "How to play"
+msgstr "Come Giocare"
 
-#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:48
-msgid "Switched colors"
-msgstr "Cambiato i colori"
+#: src/main.py:68
+msgid "Basic Rules"
+msgstr "Regole Base"
 
-#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:49
-msgid "Made it adaptive"
-msgstr "Reso adattivo"
+#: src/main.py:69
+msgid "Two players:"
+msgstr "Due giocatori:"
 
-#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:50
-msgid "Added branding"
-msgstr "Aggiunto il marchio"
+#: src/main.py:69
+msgid "and"
+msgstr "e"
 
-#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:51
-msgid "Updated runtime"
-msgstr "Aggiornato il runtime"
+#: src/main.py:70
+msgid "goes first"
+msgstr "gioca prima"
 
-#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:56
-#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:63
-msgid "Fixed bug"
-msgstr "Corretti bug"
+#: src/main.py:71
+msgid ""
+"Players take turns, aiming to win small boards and eventually the large "
+"board."
+msgstr ""
+"I giocatori vanno a turno, con l'obiettivo di vincere le tabelle piccole e "
+"poi quella grande."
 
-#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:57
-msgid "Updated metadata"
-msgstr "Metadati aggiornati"
+#: src/main.py:72
+msgid "Gameplay"
+msgstr "Gioco"
 
-#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:58
-msgid "Icon improvements"
-msgstr "Miglioramenti delle icone"
+#: src/main.py:73
+msgid "starts by playing in"
+msgstr "comincia giocando in una"
 
-#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:68
-msgid "Changed name"
-msgstr "Nome cambiato"
+#: src/main.py:73 src/main.py:80
+msgid "any"
+msgstr "qualiasi"
 
-#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:73
-msgid "First release"
-msgstr "Primo rilascio"
+#: src/main.py:73
+msgid "spot."
+msgstr "casella."
 
-#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:81
-msgid "A started game of Ultimate Tic Tac Toe"
-msgstr "Un gioco iniziato di Ultimate Tic Tac Toe"
+#: src/main.py:74
+msgid ""
+"The next player plays in the small board matching the location of the "
+"previous move."
+msgstr ""
+"Il giocatore successivo gioca nella piccola casella che corrisponde alla "
+"posizione della mossa precedente."
+
+#: src/main.py:75
+msgid "Example:"
+msgstr "Esempio:"
+
+#: src/main.py:75
+msgid "If"
+msgstr "Se"
+
+#: src/main.py:75
+msgid "plays in the top-right square of a small board,"
+msgstr "gioca nella casella in alto a destra della tabella piccola,"
+
+#: src/main.py:75
+msgid "must play in the top-right small board of the large grid."
+msgstr "deve giocare nella casella in alto a destra della tabella grande."
+
+#: src/main.py:76
+msgid "This continues, with each move determining the next board."
+msgstr ""
+"Si continua così, con ogni mossa che determina la tabella successiva."
+
+#: src/main.py:77
+msgid "Winning and Moves"
+msgstr "Vincita e Mosse"
+
+#: src/main.py:78
+msgid "Win a small board by following regular tic-tac-toe rules."
+msgstr "Si vince una tabella piccola secondo le regole di tris."
+
+#: src/main.py:79
+msgid "When a small board is won or filled, it cannot be played in again."
+msgstr ""
+"Quando una tabella piccola viene vinta o riempita, non può più essere "
+"giocata ancora."
+
+#: src/main.py:80
+msgid "If directed to a full board, you can play in"
+msgstr "Se diretto a una tabella piena, puoi giocare in una"
+
+#: src/main.py:80
+msgid "open board."
+msgstr "tabella libera."
+
+#: src/main.py:81
+msgid "End of the Game"
+msgstr "Fine del Gioco"
+
+#: src/main.py:82
+msgid ""
+"A player wins by winning three small boards in a row (horizontally, "
+"vertically, or diagonally) on the large grid."
+msgstr ""
+"Un giocatore vince conquistando tre tabelle piccole in fila "
+"(orizzontalmente, verticalmente o diagonalmente) sulla tabella grande."
+
+#: src/main.py:83
+msgid "If no legal moves remain, the game ends in a draw."
+msgstr "Se non rimangono mosse legali, la partita termina in parità."
+
+#: src/main.py:84
+msgid "Have Fun!"
+msgstr "Divertiti!"
+
+#: src/window.py:67 src/window.py:95 data/ui/window.ui:128
+msgid "Player 1"
+msgstr "Giocatore 1"
+
+#: src/window.py:91
+msgid "Player 2"
+msgstr "Giocatore 2"
+
+#: data/ui/window.ui:149
+msgid "Single Player"
+msgstr "Singolo Giocatore"
+
+#: data/ui/window.ui:154
+msgid "Multiplayer"
+msgstr "Multigiocatore"
+
+#: data/ui/window.ui:160
+msgid "Restart"
+msgstr "Riparti"
+
+#~ msgid "Improved UI with newest Libadwaita widgets"
+#~ msgstr "Interfaccia utente migliorata con i widget Libadwaita più recenti"
+
+#~ msgid "Switched colors"
+#~ msgstr "Cambiato i colori"
+
+#~ msgid "Made it adaptive"
+#~ msgstr "Reso adattivo"
+
+#~ msgid "Added branding"
+#~ msgstr "Aggiunto il marchio"
+
+#~ msgid "Updated runtime"
+#~ msgstr "Aggiornato il runtime"
+
+#~ msgid "Fixed bug"
+#~ msgstr "Corretti bug"
+
+#~ msgid "Updated metadata"
+#~ msgstr "Metadati aggiornati"
+
+#~ msgid "Icon improvements"
+#~ msgstr "Miglioramenti delle icone"
+
+#~ msgid "Changed name"
+#~ msgstr "Nome cambiato"
+
+#~ msgid "First release"
+#~ msgstr "Primo rilascio"
+
+#~ msgid "A started game of Ultimate Tic Tac Toe"
+#~ msgstr "Un gioco iniziato di Ultimate Tic Tac Toe"
