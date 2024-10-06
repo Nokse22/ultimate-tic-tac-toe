@@ -125,7 +125,7 @@
           <object class="AdwHeaderBar">
             <child type="start">
               <object class="GtkLabel" id="player_label">
-                <property name="label" translatable="yes">Player 1</property>
+                <property name="label" translatable="yes">Player X</property>
                 <property name="css-classes">accent</property>
                 <property name="css-classes">title</property>
               </object>
@@ -167,10 +167,6 @@
       </item>
     </section>
     <section>
-      <item>
-        <attribute name="action">win.shortcuts</attribute>
-        <attribute name="label" translatable="yes">Keyboard Shortcut</attribute>
-      </item>
       <item>
         <attribute name="action">app.about</attribute>
         <attribute name="label" translatable="yes">About Ultimate Tic Tac Toe</attribute>

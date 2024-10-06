@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-05 19:39+0200\n"
-"PO-Revision-Date: 2024-10-06 00:37+0200\n"
+"POT-Creation-Date: 2024-10-06 12:38+0200\n"
+"PO-Revision-Date: 2024-10-06 12:39+0200\n"
 "Last-Translator: Albano Battistella <albanobattistella@gmail.com>\n"
 "Language-Team: Italian <LL@li.org>\n"
 "Language: it\n"
@@ -19,6 +19,7 @@ msgstr ""
 
 #: data/io.github.nokse22.ultimate-tic-tac-toe.desktop.in:3
 #: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:3
+#: src/main.py:124 data/ui/window.ui:12
 msgid "Ultimate Tic Tac Toe"
 msgstr "Ultimate Tic Tac Toe"
 
@@ -38,27 +39,27 @@ msgstr ""
 "Gioca con i tuoi amici o contro l'algoritmo. Puoi leggere le regole nel "
 "gioco."
 
-#: src/main.py:56
+#: src/main.py:64
 msgid "How to play"
 msgstr "Come Giocare"
 
-#: src/main.py:68
+#: src/main.py:76
 msgid "Basic Rules"
 msgstr "Regole Base"
 
-#: src/main.py:69
+#: src/main.py:77
 msgid "Two players:"
 msgstr "Due giocatori:"
 
-#: src/main.py:69
+#: src/main.py:77
 msgid "and"
 msgstr "e"
 
-#: src/main.py:70
+#: src/main.py:78
 msgid "goes first"
 msgstr "gioca prima"
 
-#: src/main.py:71
+#: src/main.py:79
 msgid ""
 "Players take turns, aiming to win small boards and eventually the large "
 "board."
@@ -66,23 +67,23 @@ msgstr ""
 "I giocatori vanno a turno, con l'obiettivo di vincere le tabelle piccole e "
 "poi quella grande."
 
-#: src/main.py:72
+#: src/main.py:80
 msgid "Gameplay"
 msgstr "Gioco"
 
-#: src/main.py:73
+#: src/main.py:81
 msgid "starts by playing in"
 msgstr "comincia giocando in una"
 
-#: src/main.py:73 src/main.py:80
+#: src/main.py:81 src/main.py:88
 msgid "any"
 msgstr "qualiasi"
 
-#: src/main.py:73
+#: src/main.py:81
 msgid "spot."
 msgstr "casella."
 
-#: src/main.py:74
+#: src/main.py:82
 msgid ""
 "The next player plays in the small board matching the location of the "
 "previous move."
@@ -90,54 +91,53 @@ msgstr ""
 "Il giocatore successivo gioca nella piccola casella che corrisponde alla "
 "posizione della mossa precedente."
 
-#: src/main.py:75
+#: src/main.py:83
 msgid "Example:"
 msgstr "Esempio:"
 
-#: src/main.py:75
+#: src/main.py:83
 msgid "If"
 msgstr "Se"
 
-#: src/main.py:75
+#: src/main.py:83
 msgid "plays in the top-right square of a small board,"
-msgstr "gioca nella casella in alto a destra della tabella piccola,"
+msgstr "gioca nella casella in alto a destra di una tabella piccola,"
 
-#: src/main.py:75
+#: src/main.py:83
 msgid "must play in the top-right small board of the large grid."
-msgstr "deve giocare nella casella in alto a destra della tabella grande."
+msgstr "deve giocare nella tabella in alto a destra della tabella grande."
 
-#: src/main.py:76
+#: src/main.py:84
 msgid "This continues, with each move determining the next board."
-msgstr ""
-"Si continua così, con ogni mossa che determina la tabella successiva."
+msgstr "Si continua così, con ogni mossa che determina la tabella successiva."
 
-#: src/main.py:77
+#: src/main.py:85
 msgid "Winning and Moves"
 msgstr "Vincita e Mosse"
 
-#: src/main.py:78
+#: src/main.py:86
 msgid "Win a small board by following regular tic-tac-toe rules."
 msgstr "Si vince una tabella piccola secondo le regole di tris."
 
-#: src/main.py:79
+#: src/main.py:87
 msgid "When a small board is won or filled, it cannot be played in again."
 msgstr ""
 "Quando una tabella piccola viene vinta o riempita, non può più essere "
 "giocata ancora."
 
-#: src/main.py:80
+#: src/main.py:88
 msgid "If directed to a full board, you can play in"
 msgstr "Se diretto a una tabella piena, puoi giocare in una"
 
-#: src/main.py:80
+#: src/main.py:88
 msgid "open board."
 msgstr "tabella libera."
 
-#: src/main.py:81
+#: src/main.py:89
 msgid "End of the Game"
 msgstr "Fine del Gioco"
 
-#: src/main.py:82
+#: src/main.py:90
 msgid ""
 "A player wins by winning three small boards in a row (horizontally, "
 "vertically, or diagonally) on the large grid."
@@ -145,21 +145,42 @@ msgstr ""
 "Un giocatore vince conquistando tre tabelle piccole in fila "
 "(orizzontalmente, verticalmente o diagonalmente) sulla tabella grande."
 
-#: src/main.py:83
+#: src/main.py:91
 msgid "If no legal moves remain, the game ends in a draw."
 msgstr "Se non rimangono mosse legali, la partita termina in parità."
 
-#: src/main.py:84
+#: src/main.py:92
 msgid "Have Fun!"
 msgstr "Divertiti!"
 
-#: src/window.py:67 src/window.py:95 data/ui/window.ui:128
-msgid "Player 1"
-msgstr "Giocatore 1"
+#: src/window.py:69 src/window.py:93 src/window.py:97 src/window.py:217
+msgid "Player"
+msgstr "Giocatore"
 
-#: src/window.py:91
-msgid "Player 2"
-msgstr "Giocatore 2"
+#: src/window.py:206
+msgid "It's a tie"
+msgstr "Pari"
+
+#: src/window.py:207 src/window.py:218 src/window.py:223 src/window.py:228
+#: data/ui/window.ui:160
+msgid "Restart"
+msgstr "Riparti"
+
+#: src/window.py:217
+msgid "won"
+msgstr "ha vinto"
+
+#: src/window.py:222
+msgid "You lost!"
+msgstr "Hai perso!"
+
+#: src/window.py:227
+msgid "You won!"
+msgstr "Hai vinto!"
+
+#: data/ui/window.ui:128
+msgid "Player X"
+msgstr "Giocatore X"
 
 #: data/ui/window.ui:149
 msgid "Single Player"
@@ -169,9 +190,16 @@ msgstr "Singolo Giocatore"
 msgid "Multiplayer"
 msgstr "Multigiocatore"
 
-#: data/ui/window.ui:160
-msgid "Restart"
-msgstr "Riparti"
+#: data/ui/window.ui:166
+msgid "Game Rules"
+msgstr "Regole Base"
+
+#: data/ui/window.ui:172
+msgid "About Ultimate Tic Tac Toe"
+msgstr "Riguardo Ultimate Tic Tac Toe"
+
+#~ msgid "Player 2"
+#~ msgstr "Giocatore 2"
 
 #~ msgid "Improved UI with newest Libadwaita widgets"
 #~ msgstr "Interfaccia utente migliorata con i widget Libadwaita più recenti"

@@ -1,3 +1,11 @@
 .tile-button {
   padding: 0px;
 }
+
+.player-x{
+  color: var(--accent-blue);
+}
+
+.player-o{
+  color: var(--accent-red);
+}
