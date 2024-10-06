@@ -1,0 +1,202 @@
+# Polish translations for ultimate-tic-tac-toe package.
+# Copyright (C) 2024 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ultimate-tic-tac-toe package.
+# Adiee5 <adiee5@adiee5.ct8.pl>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ultimate-tic-tac-toe\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-05 19:39+0200\n"
+"PO-Revision-Date: 2024-10-05 22:48+0200\n"
+"Last-Translator: Adiee5 <adiee5@adiee5.ct8.pl>\n"
+"Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+
+#: data/io.github.nokse22.ultimate-tic-tac-toe.desktop.in:3
+#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:3
+#: data/ui/window.ui:12 src/main.py:124
+msgid "Ultimate Tic Tac Toe"
+msgstr "Rozszerzone Kółko i Krzyżyk"
+
+#: data/io.github.nokse22.ultimate-tic-tac-toe.desktop.in:9
+msgid "GNOME;GTK;Game;"
+msgstr "GNOME;GTK;Game;Gra;Zabawa;"
+
+#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:10
+msgid "(Tic Tac Toe)²"
+msgstr "(Kółko i Krzyżyk)²"
+
+#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:12
+msgid ""
+"Play with your friends or against the algorithm. You can read the rules in "
+"the game."
+msgstr "Graj z kolegami lub przeciwko algorytmowi. Zasady możesz przeczytać w "
+"grze."
+
+#: src/main.py:56
+msgid "How to play"
+msgstr "Jak grać"
+
+#: src/main.py:68
+msgid "Basic Rules"
+msgstr "Podstawowe Zasady"
+
+#: src/main.py:69
+msgid "Two players:"
+msgstr "Dwóch graczy:"
+
+#: src/main.py:69
+msgid "and"
+msgstr "i"
+
+#: src/main.py:70
+msgid "goes first"
+msgstr "zaczyna"
+
+#: src/main.py:71
+msgid ""
+"Players take turns, aiming to win small boards and eventually the large "
+"board."
+msgstr "Gracze grają po kolei, w celu wygrywania małych plansz, by w końcu "
+"zwyciężyć na dużej"
+
+#: src/main.py:72
+msgid "Gameplay"
+msgstr "Rozgrywka"
+
+#: src/main.py:73
+msgid "starts by playing in"
+msgstr "zaczyna grając w"
+
+#: src/main.py:73 src/main.py:80
+msgid "any"
+msgstr "dowolnym"
+
+#: src/main.py:73
+msgid "spot."
+msgstr "miejscu."
+
+#: src/main.py:74
+msgid ""
+"The next player plays in the small board matching the location of the "
+"previous move."
+msgstr "Następny gracz stawia ruch na małej planszy odpowiadającej położeniu "
+"poprzedniego ruchu."
+
+#: src/main.py:75
+msgid "Example:"
+msgstr "Przykład:"
+
+#: src/main.py:75
+msgid "If"
+msgstr "Jeśli"
+
+#: src/main.py:75
+msgid "plays in the top-right square of a small board,"
+msgstr "zostaje postawiony w prawym górnym polu małej planszy,"
+
+#: src/main.py:75
+msgid "must play in the top-right small board of the large grid."
+msgstr "musi grać w prawej górnej podplanszy."
+
+#: src/main.py:76
+msgid "This continues, with each move determining the next board."
+msgstr "Tak też to idzie dalej, gdzie każdy ruch wyznacza położenie następnej "
+"planszy."
+
+#: src/main.py:77
+msgid "Winning and Moves"
+msgstr "Wygrywanie i Ruchy"
+
+#: src/main.py:78
+msgid "Win a small board by following regular tic-tac-toe rules."
+msgstr "Pokonaj małą planszę z pomocą zwykłych zasad gry kółko i krzyżyk."
+
+#: src/main.py:79
+msgid "When a small board is won or filled, it cannot be played in again."
+msgstr "Jeśli mała plansza jest pokonana lub wypełniona, nie można w niej już "
+"grać."
+
+#: src/main.py:80
+msgid "If directed to a full board, you can play in"
+msgstr "Jeśli ruch przeciwnika przekieruje cię na zdobytą podplanszę, możesz "
+"grać w"
+
+#: src/main.py:80
+msgid "open board."
+msgstr " wolnym miejscu na wielkiej planszy."
+
+#: src/main.py:81
+msgid "End of the Game"
+msgstr "Koniec Gry"
+
+#: src/main.py:82
+msgid ""
+"A player wins by winning three small boards in a row (horizontally, "
+"vertically, or diagonally) on the large grid."
+msgstr "Gracz wygrywa poprzez wygranie trzech małych plansz w rzęcie (poziomo, "
+"pionowo, uskośnie) na wielkiej planszy."
+
+#: src/main.py:83
+msgid "If no legal moves remain, the game ends in a draw."
+msgstr "Jeśli brak jakichkolwiek dozwolonych ruchów, gra kończy się remisem."
+
+#: src/main.py:84
+msgid "Have Fun!"
+msgstr "Miłej Zabawy!"
+
+#: src/window.py:67 src/window.py:95 data/ui/window.ui:128
+msgid "Player 1"
+msgstr "Gracz 1"
+
+#: src/window.py:91
+msgid "Player 2"
+msgstr "Gracz 2"
+
+#: data/ui/window.ui:149
+msgid "Single Player"
+msgstr "Pojedyńczy Gracz"
+
+#: data/ui/window.ui:154
+msgid "Multiplayer"
+msgstr "Wiele Graczy"
+
+#: data/ui/window.ui:160 src/window.py:205 src/window.py:215 src/window.py:220
+#: src/window.py:225
+msgid "Restart"
+msgstr "Od nowa"
+
+#: data/ui/window.ui:166
+msgid "Game Rules"
+msgstr "Zasady Gry"
+
+#: data/ui/window.ui:172
+msgid "Keyboard Shortcut"
+msgstr "Skróty Klawiszowe"
+
+#: data/ui/window.ui:176
+msgid "About Ultimate Tic Tac Toe"
+msgstr "O Rozszerzonym Kółko i Krzyżyk"
+
+#: src/window.py:204
+msgid "It's a tie"
+msgstr "Remis"
+
+#: src/window.py:214
+#, python-brace-format
+msgid "Player {} won"
+msgstr "Gracz {} wygrał"
+
+#: src/window.py:219
+msgid "You lost!"
+msgstr "Przegrałeś!"
+
+#: src/window.py:224
+msgid "You won!"
+msgstr "Wygrałeś!"

@@ -214,7 +214,7 @@ class UltimateTicTacToeWindow(Adw.ApplicationWindow):
                 if self.multiplayer:
                     player = "X" if self.current_player == PlayerID.X else "O"
                     toast = Adw.Toast(
-                        title=_("Player") + " " + player + " " + _("won"),
+                        title=_("Player {} won").format(player),
                         button_label=_("Restart"),
                         action_name="app.restart")
                 elif self.current_player == PlayerID.O:

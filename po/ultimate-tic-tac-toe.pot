@@ -19,6 +19,7 @@ msgstr ""
 
 #: data/io.github.nokse22.ultimate-tic-tac-toe.desktop.in:3
 #: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:3
+
 #: src/main.py:124 data/ui/window.ui:12
 msgid "Ultimate Tic Tac Toe"
 msgstr ""
@@ -180,10 +181,36 @@ msgstr ""
 msgid "Multiplayer"
 msgstr ""
 
+#: data/ui/window.ui:160 src/window.py:205 src/window.py:215 src/window.py:220
+#: src/window.py:225
+msgid "Restart"
+msgstr ""
+
 #: data/ui/window.ui:166
 msgid "Game Rules"
 msgstr ""
 
 #: data/ui/window.ui:172
+msgid "Keyboard Shortcut"
+msgstr ""
+
+#: data/ui/window.ui:176
 msgid "About Ultimate Tic Tac Toe"
+msgstr ""
+
+#: src/window.py:204
+msgid "It's a tie"
+msgstr ""
+
+#: src/window.py:214
+#, python-brace-format
+msgid "Player {} won"
+msgstr ""
+
+#: src/window.py:219
+msgid "You lost!"
+msgstr ""
+
+#: src/window.py:224
+msgid "You won!"
 msgstr ""
