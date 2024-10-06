@@ -26,6 +26,8 @@ import time
 from .player_id_enum import PlayerID
 from .tic_tac_toe_grid import TicTacToeGrid
 
+from gettext import gettext as _
+
 
 @Gtk.Template(resource_path='/io/github/nokse22/ultimate-tic-tac-toe/ui/window.ui')
 class UltimateTicTacToeWindow(Adw.ApplicationWindow):
@@ -64,9 +66,9 @@ class UltimateTicTacToeWindow(Adw.ApplicationWindow):
         else:
             self.player_label.set_visible(True)
 
-        self.player_label.set_label(_("Player 1"))
-        self.player_label.remove_css_class("accent")
-        self.player_label.add_css_class("error")
+        self.player_label.set_label(_("Player") + " X")
+        self.player_label.remove_css_class("player-o")
+        self.player_label.add_css_class("player-x")
 
         self.game_over = False
 
@@ -88,13 +90,13 @@ class UltimateTicTacToeWindow(Adw.ApplicationWindow):
         if self.multiplayer:
             match self.current_player:
                 case PlayerID.X:
-                    self.player_label.set_label(_("Player 2"))
-                    self.player_label.add_css_class("accent")
-                    self.player_label.remove_css_class("error")
+                    self.player_label.set_label(_("Player") + " X")
+                    self.player_label.add_css_class("player-x")
+                    self.player_label.remove_css_class("player-o")
                 case PlayerID.O:
-                    self.player_label.set_label(_("Player 1"))
-                    self.player_label.add_css_class("error")
-                    self.player_label.remove_css_class("accent")
+                    self.player_label.set_label(_("Player") + " O")
+                    self.player_label.add_css_class("player-o")
+                    self.player_label.remove_css_class("player-x")
 
         if self.game_over:
             self.game_is_over()
@@ -110,7 +112,7 @@ class UltimateTicTacToeWindow(Adw.ApplicationWindow):
 
             if next_grid.won_by in [PlayerID.X, PlayerID.O, PlayerID.F]:
                 board = self.get_field_grid_board()
-                if board != None:
+                if board is not None:
                     start = time.time()
                     best_move = self.find_best_move(board)
                     print(f"Best move: {best_move} in {time.time() - start}")
@@ -201,8 +203,8 @@ class UltimateTicTacToeWindow(Adw.ApplicationWindow):
             if state is None:  # Full -> Tie
                 self.game_over = True
                 toast = Adw.Toast(
-                    title="It's a tie",
-                    button_label="Restart",
+                    title=_("It's a tie"),
+                    button_label=_("Restart"),
                     action_name="app.restart")
                 self.toast_overlay.add_toast(toast)
                 self.set_all_sensitivity(False)
@@ -210,19 +212,20 @@ class UltimateTicTacToeWindow(Adw.ApplicationWindow):
             elif state:  # Won by the current player
                 self.game_over = True
                 if self.multiplayer:
+                    player = "X" if self.current_player == PlayerID.X else "O"
                     toast = Adw.Toast(
-                        title=f"Player {self.current_player} won",
-                        button_label="Restart",
+                        title=_("Player") + " " + player + " " + _("won"),
+                        button_label=_("Restart"),
                         action_name="app.restart")
                 elif self.current_player == PlayerID.O:
                     toast = Adw.Toast(
-                        title="You lost!",
-                        button_label="Restart",
+                        title=_("You lost!"),
+                        button_label=_("Restart"),
                         action_name="app.restart")
                 else:
                     toast = Adw.Toast(
-                        title="You won!",
-                        button_label="Restart",
+                        title=_("You won!"),
+                        button_label=_("Restart"),
                         action_name="app.restart")
 
                 self.toast_overlay.add_toast(toast)
@@ -232,8 +235,8 @@ class UltimateTicTacToeWindow(Adw.ApplicationWindow):
         self.set_all_sensitivity(False)
 
         # Get the new board where to play and if it's not been won it is set
-        #       as sensitive to play, but if it's won or full it will set all boards
-        #       as playable
+        #       as sensitive to play, but if it's won or full it will set
+        #       all boards as playable
 
         next_grid = self.field_grid.get_child_at(btn.x, btn.y)
         if next_grid.won_by not in [PlayerID.X, PlayerID.O, PlayerID.F]:

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-06 00:55+0200\n"
+"POT-Creation-Date: 2024-10-06 12:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: data/io.github.nokse22.ultimate-tic-tac-toe.desktop.in:3
 #: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:3
-#: data/ui/window.ui:12
+#: src/main.py:124 data/ui/window.ui:12
 msgid "Ultimate Tic Tac Toe"
 msgstr ""
 
@@ -37,12 +37,139 @@ msgid ""
 "the game."
 msgstr ""
 
-#: src/window.py:67 src/window.py:95 data/ui/window.ui:128
-msgid "Player 1"
+#: src/main.py:64
+msgid "How to play"
 msgstr ""
 
-#: src/window.py:91
-msgid "Player 2"
+#: src/main.py:76
+msgid "Basic Rules"
+msgstr ""
+
+#: src/main.py:77
+msgid "Two players:"
+msgstr ""
+
+#: src/main.py:77
+msgid "and"
+msgstr ""
+
+#: src/main.py:78
+msgid "goes first"
+msgstr ""
+
+#: src/main.py:79
+msgid ""
+"Players take turns, aiming to win small boards and eventually the large "
+"board."
+msgstr ""
+
+#: src/main.py:80
+msgid "Gameplay"
+msgstr ""
+
+#: src/main.py:81
+msgid "starts by playing in"
+msgstr ""
+
+#: src/main.py:81 src/main.py:88
+msgid "any"
+msgstr ""
+
+#: src/main.py:81
+msgid "spot."
+msgstr ""
+
+#: src/main.py:82
+msgid ""
+"The next player plays in the small board matching the location of the "
+"previous move."
+msgstr ""
+
+#: src/main.py:83
+msgid "Example:"
+msgstr ""
+
+#: src/main.py:83
+msgid "If"
+msgstr ""
+
+#: src/main.py:83
+msgid "plays in the top-right square of a small board,"
+msgstr ""
+
+#: src/main.py:83
+msgid "must play in the top-right small board of the large grid."
+msgstr ""
+
+#: src/main.py:84
+msgid "This continues, with each move determining the next board."
+msgstr ""
+
+#: src/main.py:85
+msgid "Winning and Moves"
+msgstr ""
+
+#: src/main.py:86
+msgid "Win a small board by following regular tic-tac-toe rules."
+msgstr ""
+
+#: src/main.py:87
+msgid "When a small board is won or filled, it cannot be played in again."
+msgstr ""
+
+#: src/main.py:88
+msgid "If directed to a full board, you can play in"
+msgstr ""
+
+#: src/main.py:88
+msgid "open board."
+msgstr ""
+
+#: src/main.py:89
+msgid "End of the Game"
+msgstr ""
+
+#: src/main.py:90
+msgid ""
+"A player wins by winning three small boards in a row (horizontally, "
+"vertically, or diagonally) on the large grid."
+msgstr ""
+
+#: src/main.py:91
+msgid "If no legal moves remain, the game ends in a draw."
+msgstr ""
+
+#: src/main.py:92
+msgid "Have Fun!"
+msgstr ""
+
+#: src/window.py:69 src/window.py:93 src/window.py:97 src/window.py:217
+msgid "Player"
+msgstr ""
+
+#: src/window.py:206
+msgid "It's a tie"
+msgstr ""
+
+#: src/window.py:207 src/window.py:218 src/window.py:223 src/window.py:228
+#: data/ui/window.ui:160
+msgid "Restart"
+msgstr ""
+
+#: src/window.py:217
+msgid "won"
+msgstr ""
+
+#: src/window.py:222
+msgid "You lost!"
+msgstr ""
+
+#: src/window.py:227
+msgid "You won!"
+msgstr ""
+
+#: data/ui/window.ui:128
+msgid "Player X"
 msgstr ""
 
 #: data/ui/window.ui:149
@@ -53,18 +180,10 @@ msgstr ""
 msgid "Multiplayer"
 msgstr ""
 
-#: data/ui/window.ui:160
-msgid "Restart"
-msgstr ""
-
 #: data/ui/window.ui:166
 msgid "Game Rules"
 msgstr ""
 
 #: data/ui/window.ui:172
-msgid "Keyboard Shortcut"
-msgstr ""
-
-#: data/ui/window.ui:176
 msgid "About Ultimate Tic Tac Toe"
 msgstr ""
