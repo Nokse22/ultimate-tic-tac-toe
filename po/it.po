@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-06 12:38+0200\n"
-"PO-Revision-Date: 2024-10-06 12:39+0200\n"
+"PO-Revision-Date: 2024-10-06 13:53+0200\n"
 "Last-Translator: Albano Battistella <albanobattistella@gmail.com>\n"
 "Language-Team: Italian <LL@li.org>\n"
 "Language: it\n"
@@ -157,12 +157,13 @@ msgstr "Divertiti!"
 msgid "Player"
 msgstr "Giocatore"
 
-#: src/window.py:206
+#: src/window.py:206 src/window.py:204
 msgid "It's a tie"
 msgstr "Pari"
 
 #: src/window.py:207 src/window.py:218 src/window.py:223 src/window.py:228
-#: data/ui/window.ui:160
+#: data/ui/window.ui:160 src/window.py:205 src/window.py:215 src/window.py:220
+#: src/window.py:225
 msgid "Restart"
 msgstr "Riparti"
 
@@ -170,11 +171,11 @@ msgstr "Riparti"
 msgid "won"
 msgstr "ha vinto"
 
-#: src/window.py:222
+#: src/window.py:222 src/window.py:219
 msgid "You lost!"
 msgstr "Hai perso!"
 
-#: src/window.py:227
+#: src/window.py:227 src/window.py:224
 msgid "You won!"
 msgstr "Hai vinto!"
 
@@ -192,11 +193,20 @@ msgstr "Multigiocatore"
 
 #: data/ui/window.ui:166
 msgid "Game Rules"
-msgstr "Regole Base"
+msgstr "Regole di Gioco"
 
 #: data/ui/window.ui:172
+msgid "Keyboard Shortcut"
+msgstr ""
+
+#: data/ui/window.ui:176
 msgid "About Ultimate Tic Tac Toe"
 msgstr "Riguardo Ultimate Tic Tac Toe"
+
+#: src/window.py:214
+#, python-brace-format
+msgid "Player {} won"
+msgstr "Giocatore {} ha vinto"
 
 #~ msgid "Player 2"
 #~ msgstr "Giocatore 2"

@@ -151,9 +151,9 @@ msgstr "Jeśli brak jakichkolwiek dozwolonych ruchów, gra kończy się remisem.
 msgid "Have Fun!"
 msgstr "Miłej Zabawy!"
 
-#: src/window.py:67 src/window.py:95 data/ui/window.ui:128
-msgid "Player 1"
-msgstr "Gracz 1"
+#: src/window.py:69 src/window.py:93 src/window.py:97 src/window.py:217
+msgid "Player"
+msgstr "Gracz"
 
 #: src/window.py:91
 msgid "Player 2"
