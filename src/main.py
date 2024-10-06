@@ -121,7 +121,7 @@ class TacticsApplication(Adw.Application):
     def on_about_action(self, widget, _):
         """Callback for the app.about action."""
         about = Adw.AboutDialog(
-            application_name='Ultimate Tic Tac Toe',
+            application_name=translate('Ultimate Tic Tac Toe'),
             application_icon='io.github.nokse22.ultimate-tic-tac-toe',
             developer_name='Nokse',
             version='1.0.0',

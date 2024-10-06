@@ -201,8 +201,8 @@ class UltimateTicTacToeWindow(Adw.ApplicationWindow):
             if state is None:  # Full -> Tie
                 self.game_over = True
                 toast = Adw.Toast(
-                    title="It's a tie",
-                    button_label="Restart",
+                    title=_("It's a tie"),
+                    button_label=_("Restart"),
                     action_name="app.restart")
                 self.toast_overlay.add_toast(toast)
                 self.set_all_sensitivity(False)
@@ -211,18 +211,18 @@ class UltimateTicTacToeWindow(Adw.ApplicationWindow):
                 self.game_over = True
                 if self.multiplayer:
                     toast = Adw.Toast(
-                        title=f"Player {self.current_player} won",
-                        button_label="Restart",
+                        title=_("Player {} won").format(self.current_player),
+                        button_label=_("Restart"),
                         action_name="app.restart")
                 elif self.current_player == PlayerID.O:
                     toast = Adw.Toast(
-                        title="You lost!",
-                        button_label="Restart",
+                        title=_("You lost!"),
+                        button_label=_("Restart"),
                         action_name="app.restart")
                 else:
                     toast = Adw.Toast(
-                        title="You won!",
-                        button_label="Restart",
+                        title=_("You won!"),
+                        button_label=_("Restart"),
                         action_name="app.restart")
 
                 self.toast_overlay.add_toast(toast)
