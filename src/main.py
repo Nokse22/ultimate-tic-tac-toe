@@ -124,7 +124,7 @@ class TacticsApplication(Adw.Application):
             application_name=_('Ultimate Tic Tac Toe'),
             application_icon='io.github.nokse22.ultimate-tic-tac-toe',
             developer_name='Nokse',
-            version='1.0.0',
+            version='1.0.1',
             website='https://github.com/Nokse22/ultimate-tic-tac-toe',
             issue_url='https://github.com/Nokse22/ultimate-tic-tac-toe/issues',
             developers=['Nokse'],

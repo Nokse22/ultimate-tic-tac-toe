@@ -42,6 +42,15 @@
   </supports>
 
   <releases>
+    <release version="1.0.1" date="2024-10-06">
+		  <description translate="no">
+			  <ul>
+			    <li>Improved translation support</li>
+			    <li>Added Polish translation (adiee5)</li>
+			    <li>Fixed some bugs with multiplayer</li>
+			  </ul>
+		  </description>
+  	  </release>
     <release version="1.0.0" date="2024-09-18">
 		  <description translate="no">
 			  <ul>
@@ -49,7 +58,7 @@
 			    <li>Added Dutch translation (Heimen Stoffels)</li>
 			  </ul>
 		  </description>
-  	</release>
+  	  </release>
     <release version="0.2.1" date="2024-06-23">
 		  <description translate="no">
 			  <p>Updated screenshots</p>
