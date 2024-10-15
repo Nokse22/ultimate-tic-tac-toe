@@ -120,5 +120,7 @@
       <image>https://raw.githubusercontent.com/Nokse22/ultimate-tic-tac-toe/master/data/resources/screenshot%205.png</image>
     </screenshot>
   </screenshots>
-
+  <categories>
+    <category>Game</category>
+  </categories>
 </component>
