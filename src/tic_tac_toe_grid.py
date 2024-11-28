@@ -42,12 +42,15 @@ class TicTacToeGrid(Adw.Bin):
     x = None
     y = None
 
+    resource_path = "/io/github/nokse22/ultimate-tic-tac-toe/images"
+
+    x_pixbuf = GdkPixbuf.Pixbuf.new_from_resource_at_scale(
+        f"{resource_path}/cross-large-symbolic.svg", -1, 500, True)
+    o_pixbuf = GdkPixbuf.Pixbuf.new_from_resource_at_scale(
+        f"{resource_path}/circle-outline-thick-symbolic.svg", -1, 500, True)
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.x_pixbuf = GdkPixbuf.Pixbuf.new_from_resource_at_scale(
-            "/io/github/nokse22/ultimate-tic-tac-toe/images/cross-large-symbolic.svg", -1, 400, True)
-        self.o_pixbuf = GdkPixbuf.Pixbuf.new_from_resource_at_scale(
-            "/io/github/nokse22/ultimate-tic-tac-toe/images/circle-outline-thick-symbolic.svg", -1, 400, True)
 
         for x in range(3):
             for y in range(3):

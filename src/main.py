@@ -28,9 +28,10 @@ import gettext
 from gettext import gettext as _
 
 LOCALE_DIR = path.join(
-    path.dirname(__file__).split('ultimate-tic-tac-toe')[0], 'locale')
-gettext.bindtextdomain('ultimate-tic-tac-toe', LOCALE_DIR)
-gettext.textdomain('ultimate-tic-tac-toe')
+    path.dirname(__file__).split("ultimate-tic-tac-toe")[0], "locale"
+)
+gettext.bindtextdomain("ultimate-tic-tac-toe", LOCALE_DIR)
+gettext.textdomain("ultimate-tic-tac-toe")
 
 
 class TacticsApplication(Adw.Application):
@@ -38,12 +39,13 @@ class TacticsApplication(Adw.Application):
 
     def __init__(self):
         super().__init__(
-            application_id='io.github.nokse22.ultimate-tic-tac-toe',
-            flags=Gio.ApplicationFlags.DEFAULT_FLAGS)
-        self.create_action('quit', lambda *_: self.quit(), ['<primary>q'])
-        self.create_action('about', self.on_about_action)
-        self.create_action('restart', self.on_restart_action)
-        self.create_action('rules', self.on_rules_action)
+            application_id="io.github.nokse22.ultimate-tic-tac-toe",
+            flags=Gio.ApplicationFlags.DEFAULT_FLAGS,
+        )
+        self.create_action("quit", lambda *_: self.quit(), ["<primary>q"])
+        self.create_action("about", self.on_about_action)
+        self.create_action("restart", self.on_restart_action)
+        self.create_action("rules", self.on_rules_action)
 
         player_action = Gio.SimpleAction.new_stateful(
             "players",
@@ -56,14 +58,15 @@ class TacticsApplication(Adw.Application):
 
     def on_players_changed(self, action, state):
         action.set_state(state)
-        self.win.multiplayer = False if state.get_string() == "singleplayer" else True
+        self.win.multiplayer = (
+            False if state.get_string() == "singleplayer" else True
+        )
         self.win.restart()
 
     def on_rules_action(self, *args):
         rules_dialog = Adw.Dialog(
-            title=_("How to play"),
-            content_width=500,
-            content_height=500)
+            title=_("How to play"), content_width=500, content_height=500
+        )
         toolbar_view = Adw.ToolbarView()
         rules_dialog.set_child(toolbar_view)
         headerbar = Adw.HeaderBar()
@@ -73,23 +76,76 @@ class TacticsApplication(Adw.Application):
 
         # Translators Note:
         # The following strings are to _( the rules page
-        rules_text = "<span font=\"16\" weight=\"bold\" rise=\"10000\">" + _("Basic Rules") + "</span>\n" \
-             " • " + _("Two players:") + " <b>X</b> " + _("and") + " <b>O</b>\n" \
-             " • <b>X</b> " + _("goes first") + "\n" \
-             " • " + _("Players take turns, aiming to win small boards and eventually the large board.") + "\n\n" \
-             "<span font=\"16\" weight=\"bold\" rise=\"10000\">" + _("Gameplay") + "</span>\n" \
-             " 1. <b>X</b> " + _("starts by playing in") + " <i>" + _("any") + "</i> " + _("spot.") + "\n" \
-             " 2. " + _("The next player plays in the small board matching the location of the previous move.") + "\n" \
-             "<i>" + _("Example:") + "</i> " + _("If") + " <b>X</b> " + _("plays in the top-right square of a small board,") + " <b>O</b> " + _("must play in the top-right small board of the large grid.") + "\n" \
-             " 3. " + _("This continues, with each move determining the next board.") + "\n\n" \
-             "<span font=\"16\" weight=\"bold\" rise=\"10000\">" + _("Winning and Moves") + "</span>\n" \
-             " • " + _("Win a small board by following regular tic-tac-toe rules.") + "\n" \
-             " • " + _("When a small board is won or filled, it cannot be played in again.") + "\n" \
-             " • " + _("If directed to a full board, you can play in") + " <i>" + _("any") + "</i> " + _("open board.") + "\n\n" \
-             "<span font=\"16\" weight=\"bold\" rise=\"10000\">" + _("End of the Game") + "</span>\n" \
-             " • " + _("A player wins by winning three small boards in a row (horizontally, vertically, or diagonally) on the large grid.") + "\n" \
-             " • " + _("If no legal moves remain, the game ends in a draw.") + "\n\n" \
-             + _("Have Fun!") + "\n"
+        rules_text = (
+            '<span font="16" weight="bold" rise="10000">'
+            + _("Basic Rules")
+            + "</span>\n"
+            " • " + _("Two players:") + " <b>X</b> " + _("and") + " <b>O</b>\n"
+            " • <b>X</b> " + _("goes first") + "\n"
+            " • "
+            + _(
+                "Players take turns, aiming to win small boards and eventually the large board."
+            )
+            + "\n\n"
+            '<span font="16" weight="bold" rise="10000">'
+            + _("Gameplay")
+            + "</span>\n"
+            " 1. <b>X</b> "
+            + _("starts by playing in")
+            + " <i>"
+            + _("any")
+            + "</i> "
+            + _("spot.")
+            + "\n"
+            " 2. "
+            + _(
+                "The next player plays in the small board matching the location of the previous move."
+            )
+            + "\n"
+            "<i>"
+            + _("Example:")
+            + "</i> "
+            + _("If")
+            + " <b>X</b> "
+            + _("plays in the top-right square of a small board,")
+            + " <b>O</b> "
+            + _("must play in the top-right small board of the large grid.")
+            + "\n"
+            " 3. "
+            + _("This continues, with each move determining the next board.")
+            + "\n\n"
+            '<span font="16" weight="bold" rise="10000">'
+            + _("Winning and Moves")
+            + "</span>\n"
+            " • "
+            + _("Win a small board by following regular tic-tac-toe rules.")
+            + "\n"
+            " • "
+            + _(
+                "When a small board is won or filled, it cannot be played in again."
+            )
+            + "\n"
+            " • "
+            + _("If directed to a full board, you can play in")
+            + " <i>"
+            + _("any")
+            + "</i> "
+            + _("open board.")
+            + "\n\n"
+            '<span font="16" weight="bold" rise="10000">'
+            + _("End of the Game")
+            + "</span>\n"
+            " • "
+            + _(
+                "A player wins by winning three small boards in a row (horizontally, vertically, or diagonally) on the large grid."
+            )
+            + "\n"
+            " • "
+            + _("If no legal moves remain, the game ends in a draw.")
+            + "\n\n"
+            + _("Have Fun!")
+            + "\n"
+        )
 
         scrolled.set_child(
             Gtk.Label(
@@ -98,7 +154,7 @@ class TacticsApplication(Adw.Application):
                 wrap=True,
                 margin_start=12,
                 margin_end=12,
-                margin_top=12
+                margin_top=12,
             )
         )
 
@@ -121,14 +177,15 @@ class TacticsApplication(Adw.Application):
     def on_about_action(self, *args):
         """Callback for the app.about action."""
         about = Adw.AboutDialog(
-            application_name=_('Ultimate Tic Tac Toe'),
-            application_icon='io.github.nokse22.ultimate-tic-tac-toe',
-            developer_name='Nokse',
-            version='1.0.1',
-            website='https://github.com/Nokse22/ultimate-tic-tac-toe',
-            issue_url='https://github.com/Nokse22/ultimate-tic-tac-toe/issues',
-            developers=['Nokse'],
-            copyright='© 2023 Nokse')
+            application_name=_("Ultimate Tic Tac Toe"),
+            application_icon="io.github.nokse22.ultimate-tic-tac-toe",
+            developer_name="Nokse",
+            version="1.0.1",
+            website="https://github.com/Nokse22/ultimate-tic-tac-toe",
+            issue_url="https://github.com/Nokse22/ultimate-tic-tac-toe/issues",
+            developers=["Nokse"],
+            copyright="© 2023 Nokse",
+        )
         about.present(self.win)
 
     def create_action(self, name, callback, shortcuts=None):
