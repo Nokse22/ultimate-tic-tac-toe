@@ -1,4 +1,13 @@
 pkgdatadir = get_option('prefix') / get_option('datadir') / meson.project_name()
+moduledir = pkgdatadir / 'ultimate_tactic'
+gnome = import('gnome')
+
+gnome.compile_resources('ultimate-tic-tac-toe',
+  'ultimate-tic-tac-toe.gresource.xml',
+  gresource_bundle: true,
+  install: true,
+  install_dir: pkgdatadir,
+)
 
 python = import('python')
 

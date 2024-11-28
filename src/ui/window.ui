@@ -1,13 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Created with Cambalache 0.90.2 -->
 <interface>
-  <!-- interface-name tic tac toe.ui -->
   <requires lib="gio" version="2.0"/>
   <requires lib="gtk" version="4.12"/>
   <requires lib="libadwaita" version="1.4"/>
   <template class="UltimateTicTacToeWindow" parent="AdwApplicationWindow">
-    <property name="default-height">650</property>
-    <property name="default-width">600</property>
+    <property name="default-height">550</property>
+    <property name="default-width">500</property>
     <property name="height-request">360</property>
     <property name="title" translatable="yes">Ultimate Tic Tac Toe</property>
     <property name="width-request">360</property>

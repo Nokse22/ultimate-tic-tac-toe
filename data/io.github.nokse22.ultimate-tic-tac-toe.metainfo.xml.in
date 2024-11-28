@@ -42,6 +42,13 @@
   </supports>
 
   <releases>
+    <release version="1.1.0" date="2024-11-29">
+		  <description translate="no">
+			  <ul>
+			    <li>Fixed Bug with the enemy algorithm</li>
+			  </ul>
+		  </description>
+  	  </release>
     <release version="1.0.1" date="2024-10-06">
 		  <description translate="no">
 			  <ul>
