@@ -27,9 +27,12 @@ from .tic_tac_toe_grid import TicTacToeGrid
 
 from gettext import gettext as _
 
+from pprint import pprint
+
 
 @Gtk.Template(
-    resource_path="/io/github/nokse22/ultimate-tic-tac-toe/ui/window.ui")
+    resource_path="/io/github/nokse22/ultimate-tic-tac-toe/ui/window.ui"
+)
 class UltimateTicTacToeWindow(Adw.ApplicationWindow):
     __gtype_name__ = "UltimateTicTacToeWindow"
 
@@ -115,7 +118,11 @@ class UltimateTicTacToeWindow(Adw.ApplicationWindow):
                 if board is not None:
                     best_move = self.find_best_move(board)
                     print(f"Best move: {best_move}")
-                    next_grid = self.field_grid.get_child_at(*best_move)
+                    if best_move:
+                        next_grid = self.field_grid.get_child_at(*best_move)
+                    else:
+                        self.it_is_tie()
+                        return
 
                 # If the selected move is already played or is full it
                 #       will select a new board to play at random
@@ -132,6 +139,7 @@ class UltimateTicTacToeWindow(Adw.ApplicationWindow):
             #       this board and select it
 
             board = self.get_small_grid_board(next_grid)
+            pprint(board)
             best_move = self.find_best_move(board)
             print(f"Best move: {best_move}")
             button = next_grid.get_child_at(*best_move)
@@ -146,13 +154,7 @@ class UltimateTicTacToeWindow(Adw.ApplicationWindow):
         for y in range(3):
             row = []
             for x in range(3):
-                played = small_grid.get_child_at(x, y).played_by
-                if played == PlayerID.N:
-                    row.append(0)
-                elif played == PlayerID.X:
-                    row.append(-1)
-                elif played == PlayerID.O:
-                    row.append(1)
+                row.append(small_grid.get_child_at(x, y).played_by)
             board.append(row)
         return board
 
@@ -161,24 +163,9 @@ class UltimateTicTacToeWindow(Adw.ApplicationWindow):
         for y in range(3):
             row = []
             for x in range(3):
-                play = self.field_grid.get_child_at(x, y).won_by
-                if play == PlayerID.X:
-                    row.append(-1)
-                elif play == PlayerID.O:
-                    row.append(1)
-                elif play == PlayerID.N:
-                    row.append(0)
-                elif play == PlayerID.F:
-                    return None
+                row.append(self.field_grid.get_child_at(x, y).won_by)
             board.append(row)
         return board
-
-    def game_is_over(self):
-        for x in range(3):
-            for y in range(3):
-                grid = self.field_grid.get_child_at(x, y)
-                grid.set_sensitive(False)
-        return
 
     def select_tile(self, parent, btn):
         print(f"Current player: Player {self.current_player}")
@@ -188,7 +175,7 @@ class UltimateTicTacToeWindow(Adw.ApplicationWindow):
         # Check if the just played board has been won of is full
 
         played_grid = self.field_grid.get_child_at(parent.x, parent.y)
-        state = self.check_win(played_grid, self.current_player)
+        state = self.evaluate_board(self.get_small_grid_board(played_grid))
         if state is None:  # Board is full
             played_grid.set_sensitive(False)
             played_grid.won_by = PlayerID.F
@@ -198,16 +185,9 @@ class UltimateTicTacToeWindow(Adw.ApplicationWindow):
             # Check if the big game has been won
 
             played_grid.won(self.current_player)
-            state = self.big_check_win(self.current_player)
+            state = self.evaluate_board(self.get_field_grid_board())
             if state is None:  # Full -> Tie
-                self.game_over = True
-                toast = Adw.Toast(
-                    title=_("It's a tie"),
-                    button_label=_("Restart"),
-                    action_name="app.restart",
-                )
-                self.toast_overlay.add_toast(toast)
-                self.set_all_sensitivity(False)
+                self.it_is_tie()
                 return
             elif state:  # Won by the current player
                 self.game_over = True
@@ -251,37 +231,22 @@ class UltimateTicTacToeWindow(Adw.ApplicationWindow):
                     if next_grid.won_by == PlayerID.N:
                         next_grid.set_sensitive(True)
 
-    def check_win(self, grid, player):
-        for row in range(3):
-            if all(
-                grid.get_child_at(col, row).played_by == player
-                for col in range(3)
-            ):
-                return True
+    def it_is_tie(self):
+        self.game_over = True
+        toast = Adw.Toast(
+            title=_("It's a tie"),
+            button_label=_("Restart"),
+            action_name="app.restart",
+        )
+        self.toast_overlay.add_toast(toast)
+        self.set_all_sensitivity(False)
 
-        for col in range(3):
-            if all(
-                grid.get_child_at(col, row).played_by == player
-                for row in range(3)
-            ):
-                return True
-
-        if all(
-            grid.get_child_at(i, i).played_by == player for i in range(3)
-        ) or all(
-            grid.get_child_at(i, 2 - i).played_by == player for i in range(3)
-        ):
-            return True
-
-        full = True
+    def game_is_over(self):
         for x in range(3):
             for y in range(3):
-                if grid.get_child_at(x, y).played_by == PlayerID.N:
-                    full = False
-        if full:
-            return None
-
-        return False
+                grid = self.field_grid.get_child_at(x, y)
+                grid.set_sensitive(False)
+        return
 
     def set_all_sensitivity(self, sens):
         for x in range(3):
@@ -289,83 +254,55 @@ class UltimateTicTacToeWindow(Adw.ApplicationWindow):
                 grid = self.field_grid.get_child_at(x, y)
                 grid.set_sensitive(sens)
 
-    def big_check_win(self, player):
-        print(f"Checking win for {player}")
-        for row in range(3):
-            if all(
-                self.field_grid.get_child_at(col, row).won_by == player
-                for col in range(3)
-            ):
-                return True
-
-        for col in range(3):
-            if all(
-                self.field_grid.get_child_at(col, row).won_by == player
-                for row in range(3)
-            ):
-                return True
-
-        if all(
-            self.field_grid.get_child_at(i, i).won_by == player
-            for i in range(3)
-        ) or all(
-            self.field_grid.get_child_at(i, 2 - i).won_by == player
-            for i in range(3)
-        ):
-            return True
-
-        full = True
-        for x in range(3):
-            for y in range(3):
-                if self.field_grid.get_child_at(x, y).won_by == PlayerID.N:
-                    full = False
-        if full:
-            return None
-
-        return False
-
-    def evaluate(self, board):
-        # Check rows, columns, and diagonals for a win
-        for row in board:
-            if all(cell == row[0] and cell != 0 for cell in row):
+    def evaluate_board(self, brd):
+        # Check rows for winner
+        for row in brd:
+            if all(cell == row[0] and cell != PlayerID.N for cell in row):
                 return row[0]
 
+        # Check columns for winner
         for col in range(3):
             if all(
-                board[row][col] == board[0][col] and board[row][col] != 0
+                brd[row][col] == brd[0][col] and brd[row][col] != PlayerID.N
                 for row in range(3)
             ):
-                return board[0][col]
+                return brd[0][col]
 
-        if board[0][0] == board[1][1] == board[2][2] and board[0][0] != 0:
-            return board[0][0]
+        # Check diagonals for winner
+        if brd[0][0] == brd[1][1] == brd[2][2] and brd[0][0] != PlayerID.N:
+            return brd[0][0]
+        if brd[0][2] == brd[1][1] == brd[2][0] and brd[0][2] != PlayerID.N:
+            return brd[0][2]
 
-        if board[0][2] == board[1][1] == board[2][0] and board[0][2] != 0:
-            return board[0][2]
-
-        # Check for a draw
-        if all(cell != 0 for row in board for cell in row):
-            return 0
+        # Check for tie
+        if all(cell != PlayerID.N for row in brd for cell in row):
+            return None  # Tie
 
         # Game still ongoing
-        return None
+        return False
 
     def minimax(self, board, depth, alpha, beta, is_maximizing):
-        result = self.evaluate(board)
+        result = self.evaluate_board(board)
 
-        if result is not None:
-            return result - depth
+        # Terminal states
+        if result is not False:
+            if result == PlayerID.X:
+                return -10 + depth
+            elif result == PlayerID.O:
+                return 10 - depth
+            elif result is None:  # Tie
+                return 0
 
         if is_maximizing:
             best_score = float("-inf")
             for row in range(3):
                 for col in range(3):
-                    if board[row][col] == 0:
-                        board[row][col] = 1
+                    if board[row][col] == PlayerID.N:
+                        board[row][col] = PlayerID.O
                         score = self.minimax(
                             board, depth + 1, alpha, beta, False
                         )
-                        board[row][col] = 0
+                        board[row][col] = PlayerID.N
                         best_score = max(best_score, score)
                         alpha = max(alpha, best_score)
                         if beta <= alpha:
@@ -375,12 +312,12 @@ class UltimateTicTacToeWindow(Adw.ApplicationWindow):
             best_score = float("inf")
             for row in range(3):
                 for col in range(3):
-                    if board[row][col] == 0:
-                        board[row][col] = -1
+                    if board[row][col] == PlayerID.N:
+                        board[row][col] = PlayerID.X
                         score = self.minimax(
                             board, depth + 1, alpha, beta, True
                         )
-                        board[row][col] = 0
+                        board[row][col] = PlayerID.N
                         best_score = min(best_score, score)
                         beta = min(beta, best_score)
                         if beta <= alpha:
@@ -388,20 +325,21 @@ class UltimateTicTacToeWindow(Adw.ApplicationWindow):
             return best_score
 
     def find_best_move(self, board):
-        best_score = float("-inf")
         best_move = None
+        best_score = float("-inf")
 
-        if board == [[0, 0, 0], [0, 0, 0], [0, 0, 0]]:
-            return [random.randint(0, 2), random.randint(0, 2)]
+        if all(all(played == PlayerID.N for played in rows) for rows in board):
+            return (random.choice([0, 2]), random.choice([0, 2]))
 
         for row in range(3):
             for col in range(3):
-                if board[row][col] == 0:
-                    board[row][col] = 1
+                if board[row][col] == PlayerID.N:
+                    board[row][col] = PlayerID.O
                     score = self.minimax(
                         board, 0, float("-inf"), float("inf"), False
                     )
-                    board[row][col] = 0
+                    board[row][col] = PlayerID.N
+
                     if score > best_score:
                         best_score = score
                         best_move = (col, row)
