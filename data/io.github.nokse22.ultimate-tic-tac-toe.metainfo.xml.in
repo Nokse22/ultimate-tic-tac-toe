@@ -42,7 +42,7 @@
   </supports>
 
   <releases>
-    <release version="1.0.2" date="2024-11-28">
+    <release version="1.0.2" date="2024-11-29">
 		  <description translate="no">
 			  <ul>
 			    <li>Fixed Bug with the enemy algorithm</li>
