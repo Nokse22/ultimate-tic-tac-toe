@@ -33,13 +33,13 @@
   </branding>
 
   <recommends>
-    <display_length compare="ge">360</display_length>
-  </recommends>
-  <supports>
-    <control>pointing</control>
     <control>keyboard</control>
+    <control>pointing</control>
     <control>touch</control>
-  </supports>
+  </recommends>
+  <requires>
+    <display_length compare="ge">360</display_length>
+  </requires>
 
   <releases>
     <release version="1.1.0" date="2025-05-04">
