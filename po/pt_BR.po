@@ -1,0 +1,203 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-06 13:56+0200\n"
+"PO-Revision-Date: 2025-05-18 20:41-0300\n"
+"Last-Translator: Fúlvio Alves <fga.fulvio@gmail.com>\n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.6\n"
+
+#: data/io.github.nokse22.ultimate-tic-tac-toe.desktop.in:3
+#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:3
+#: src/main.py:124 data/ui/window.ui:12
+msgid "Ultimate Tic Tac Toe"
+msgstr "Ultimate Tic Tac Toe"
+
+#: data/io.github.nokse22.ultimate-tic-tac-toe.desktop.in:9
+msgid "GNOME;GTK;Game;"
+msgstr "GNOME;GTK;Game;Jogo;"
+
+#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:10
+msgid "(Tic Tac Toe)²"
+msgstr "(Tic Tac Toe)²"
+
+#: data/io.github.nokse22.ultimate-tic-tac-toe.metainfo.xml.in:12
+msgid ""
+"Play with your friends or against the algorithm. You can read the rules in "
+"the game."
+msgstr ""
+"Jogue com seus amigos ou contra o algoritmo. Você pode ler as regras no "
+"jogo."
+
+#: src/main.py:64
+msgid "How to play"
+msgstr "Como jogar"
+
+#: src/main.py:76
+msgid "Basic Rules"
+msgstr "Regras básicas"
+
+#: src/main.py:77
+msgid "Two players:"
+msgstr "Dois jogadores:"
+
+#: src/main.py:77
+msgid "and"
+msgstr "e"
+
+#: src/main.py:78
+msgid "goes first"
+msgstr "começa primeiro"
+
+#: src/main.py:79
+msgid ""
+"Players take turns, aiming to win small boards and eventually the large "
+"board."
+msgstr ""
+"Os jogadores se revezam, com o objetivo de ganhar os tabuleiros pequenos "
+"e, por fim, o tabuleiro grande."
+
+#: src/main.py:80
+msgid "Gameplay"
+msgstr "Jogabilidade"
+
+#: src/main.py:81
+msgid "starts by playing in"
+msgstr "começa jogando em"
+
+#: src/main.py:81 src/main.py:88
+msgid "any"
+msgstr "qualquer"
+
+#: src/main.py:81
+msgid "spot."
+msgstr "espaço."
+
+#: src/main.py:82
+msgid ""
+"The next player plays in the small board matching the location of the "
+"previous move."
+msgstr ""
+"O próximo jogador joga no pequeno tabuleiro correspondente ao local do "
+"movimento anterior."
+
+#: src/main.py:83
+msgid "Example:"
+msgstr "Exemplo:"
+
+#: src/main.py:83
+msgid "If"
+msgstr "Se"
+
+#: src/main.py:83
+msgid "plays in the top-right square of a small board,"
+msgstr "jogar no quadrado superior direito de um tabuleiro pequeno,"
+
+#: src/main.py:83
+msgid "must play in the top-right small board of the large grid."
+msgstr ""
+"deverá jogar no quadrado superior direito do tabuleiro pequeno da grade "
+"grande."
+
+#: src/main.py:84
+msgid "This continues, with each move determining the next board."
+msgstr "Isso continua, com cada movimento determinando o próximo tabuleiro."
+
+#: src/main.py:85
+msgid "Winning and Moves"
+msgstr "Vitórias e Movimentos"
+
+#: src/main.py:86
+msgid "Win a small board by following regular tic-tac-toe rules."
+msgstr ""
+"Ganhe um pequeno tabuleiro seguindo as regras normais do jogo da velha."
+
+#: src/main.py:87
+msgid "When a small board is won or filled, it cannot be played in again."
+msgstr ""
+"Quando um tabuleiro pequeno é ganho ou preenchido, ele não pode ser jogado "
+"novamente."
+
+#: src/main.py:88
+msgid "If directed to a full board, you can play in"
+msgstr "Se for direcionado para um tabuleiro completo, você pode jogar"
+
+#: src/main.py:88
+msgid "open board."
+msgstr "tabuleiro aberto."
+
+#: src/main.py:89
+msgid "End of the Game"
+msgstr "Fim do Jogo"
+
+#: src/main.py:90
+msgid ""
+"A player wins by winning three small boards in a row (horizontally, "
+"vertically, or diagonally) on the large grid."
+msgstr ""
+"Um jogador vence se ganhar três tabuleiros pequenos em uma linha "
+"(horizontal, vertical ou diagonal) na grade grande."
+
+#: src/main.py:91
+msgid "If no legal moves remain, the game ends in a draw."
+msgstr "Se não houver mais movimentos legais, o jogo termina empatado."
+
+#: src/main.py:92
+msgid "Have Fun!"
+msgstr "Divirta-se!"
+
+#: src/window.py:69 src/window.py:93 src/window.py:97
+msgid "Player"
+msgstr "Jogador"
+
+#: src/window.py:206
+msgid "It's a tie"
+msgstr "É um empate"
+
+#: src/window.py:207 src/window.py:218 src/window.py:223 src/window.py:228
+#: data/ui/window.ui:160
+msgid "Restart"
+msgstr "Reiniciar"
+
+#: src/window.py:217
+msgid "Player {} won"
+msgstr "O jogador {} venceu"
+
+#: src/window.py:222
+msgid "You lost!"
+msgstr "Você perdeu!"
+
+#: src/window.py:227
+msgid "You won!"
+msgstr "Você venceu!"
+
+#: data/ui/window.ui:128
+msgid "Player X"
+msgstr "Jogador X"
+
+#: data/ui/window.ui:149
+msgid "Single Player"
+msgstr "Um jogador"
+
+#: data/ui/window.ui:154
+msgid "Multiplayer"
+msgstr "Multijogador"
+
+#: data/ui/window.ui:166
+msgid "Game Rules"
+msgstr "Regras do jogo"
+
+#: data/ui/window.ui:172
+msgid "About Ultimate Tic Tac Toe"
+msgstr "Sobre Ultimate Tic Tac Toe"
